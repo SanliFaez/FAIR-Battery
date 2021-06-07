@@ -1,0 +1,7 @@
+include MANIFEST.in
+include README.md
+include setup.py
+include LICENSE
+include examples/*
+include labphew/view/design/icons/*
+include docs/*
