@@ -17,7 +17,7 @@ testing needs of redox-flow batteries.
 The software works on any major computer platform, and binaries can be found here:
 [Link to download of binaries]
 
-The software is a fork of the Labphew project: https://github.com/SanliFaez/labphew
+The software is a fork of the Labphew project: https://github.com/SanliFaez/labphew.
 
 ### Hardware for Battery Testing
 
