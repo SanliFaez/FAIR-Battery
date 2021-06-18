@@ -2,6 +2,8 @@
 
 Hardware, design, and a learning community for building an open-hardware redox-flow battery from the [Center for Unusual Collaborations](https://www.unusualcollaborations.com/)
 
+![FAIR-Battery logo](https://github.com/SanliFaez/FAIR-Battery/blob/main/docs/source/_static/fair-battery_logo.png)
+
 In the _FAIR-Battery_ project, we aim to create an open-source electrochemical battery (FAIR = Findable + Accessible + Interoperable + Reproducible).
 We seek to present an open-hardware platform for a versatile battery technology and make the platform radically accessible:
 1- by deliberately using low cost and locally available materials suitable for local user groups, and
@@ -38,7 +40,7 @@ This project is initiated by:
 
 ### Active students
 
-The following students a
+The following students are currently conrtibuting to the project
 
 - Catherine Doherty - University College Utrecht
 - Nicolas Barker - Delft University of Technology
