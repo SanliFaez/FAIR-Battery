@@ -1,6 +1,6 @@
-***********************
+****************************
 Welcome to FAIR-Battery docs
-***********************
+****************************
 
 .. image:: _static/fair-battery_logo.png
    :scale: 50 %
