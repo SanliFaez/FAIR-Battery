@@ -1,5 +1,7 @@
 # FAIR-Battery
 
+[![Join the chat at https://gitter.im/FAIR-Battery/community](https://badges.gitter.im/FAIR-Battery/community.svg)](https://gitter.im/FAIR-Battery/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Software and design for building an open-hardware redox-flow battery from the Center for Unusual Collaborations [CUCo]
 
 ## Battery Hardware
