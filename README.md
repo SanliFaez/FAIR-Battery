@@ -1,5 +1,8 @@
 # The FAIR-Battery project
 
+[![Join the chat at https://gitter.im/FAIR-Battery/community](https://badges.gitter.im/FAIR-Battery/community.svg)](https://gitter.im/FAIR-Battery/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+
 Hardware, design, and a learning community for building an open-hardware redox-flow battery from the [Center for Unusual Collaborations](https://www.unusualcollaborations.com/)
 
 ![FAIR-Battery logo](https://github.com/SanliFaez/FAIR-Battery/blob/main/docs/source/_static/fair-battery_logo.png)
