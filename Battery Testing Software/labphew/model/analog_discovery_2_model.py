@@ -19,8 +19,8 @@ from time import time, sleep, localtime, strftime
 import logging
 import xarray as xr
 from datetime import datetime
-from labphew.core.base.operator_base import OperatorBase
-import labphew
+from Battery_Testing_Software.labphew.core.base.operator_base import OperatorBase
+import Battery_Testing_Software.labphew
 
 
 class Operator(OperatorBase):
@@ -416,7 +416,7 @@ class Operator(OperatorBase):
             filename = None
 
         if filename is None:
-            filename = os.path.join(labphew.package_path, 'core', 'defaults', 'analog_discovery_2_config.yml')
+            filename = os.path.join(Battery_Testing_Software.labphew.package_path, 'core', 'defaults', 'analog_discovery_2_config.yml')
         with open(filename, 'r') as f:
             self.properties.update(yaml.safe_load(f))
         self.properties['config_file'] = filename

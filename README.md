@@ -43,7 +43,7 @@ This project is initiated by:
 
 ### Active students
 
-The following students are currently conrtibuting to the project
+The following students are currently contributing to the project
 
 - Catherine Doherty - University College Utrecht
 - Nicolas Barker - Delft University of Technology

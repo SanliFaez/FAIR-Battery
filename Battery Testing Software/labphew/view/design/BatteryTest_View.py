@@ -19,19 +19,19 @@ Examples of how to use can be found at the end of the file under if __name__=='_
 """
 import numpy as np
 import pyqtgraph as pg  # used for additional plotting features
-from PyQt5 import uic, QtCore, QtGui
+from PyQt5 import uic, QtGui
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon
 
 import yaml
-import labphew
+import Battery_Testing_Software.labphew
 import logging
 import os
 from time import time
-from labphew.core.tools.gui_tools import set_spinbox_stepsize, ValueLabelItem, SaverWidget, ModifyConfig, fit_on_screen
-from labphew.core.base.general_worker import WorkThread
-from labphew.core.base.view_base import MonitorWindowBase, ScanWindowBase
+from Battery_Testing_Software.labphew.core.tools.gui_tools import set_spinbox_stepsize, ValueLabelItem, SaverWidget, ModifyConfig
+from Battery_Testing_Software.labphew.core.base.general_worker import WorkThread
+from Battery_Testing_Software.labphew.core.base.view_base import MonitorWindowBase, ScanWindowBase
 
 
 class MonitorWindow(MonitorWindowBase):
@@ -112,6 +112,18 @@ class MonitorWindow(MonitorWindowBase):
         self.target_current = current
         self.logger.debug("Target: " + str(round(current, 3)) + " mA")
 
+    def target_resistance(self, resistance):
+        self.logger.debug("Target: " + str(round(resistance, 3)) + " Ohms")
+
+    def min_frequency(self, frequency):
+        self.logger.debug("Min. Frequency: " + str(frequency) + " Hz")
+
+    def max_frequency(self, frequency):
+        self.logger.debug("Max. Frequency: " + str(frequency) + " Hz")
+
+    def steps_per_decade(self, steps):
+        self.logger.debug("Steps per Decade:" + str(steps))
+
     def start_test_button(self):
         """
         Called when start button is pressed.
@@ -144,7 +156,7 @@ class MonitorWindow(MonitorWindowBase):
         - flags the operator to stop
         - uses the Workthread stop method to wait a bit for the operator to finish, or terminate thread if timeout occurs
         """
-        self.operator.pps_out(0, 0.6)
+        #self.operator.pps_out(0, 0.6)
         if not self.monitor_thread.isRunning():
             self.logger.debug('Monitor is not running')
             return
@@ -157,8 +169,6 @@ class MonitorWindow(MonitorWindowBase):
             self.operator._busy = False  # Reset in case the monitor was not stopped gracefully, but forcefully stopped
         self.operator.pps_out(0, 0.6)
 
-
-
     def reset_test_button(self):
         self.logger.debug('Resetting monitor')
         self.curve1.setData((0, 0), (0, 0))
@@ -168,11 +178,23 @@ class MonitorWindow(MonitorWindowBase):
         self.operator.pps_out(0, 4)
         pass
 
-    def test_mode(self, mode):
-        self.test_mode = mode
-        self.logger.debug('Test Mode: ' + str(mode))
+    def test_selection(self, selection):
+        self.test_mode = selection
+        self.logger.debug('CV (0) / CC (1) / CR (2): ' + str(selection))
 
-    def confirmation_box(self, message):
+    def test_mode(self, mode):
+        self.logger.debug('Charge/Discharge (0) / Impedance (1): ' + str(mode))
+
+    def charge_mode(self, charge_mode):
+        self.logger.debug('Charge (T) / Discharge (F): ' + str(charge_mode))
+
+    def flow_rate(self, flow_rate):
+        self.logger.debug('Flow Rate: ' + str(flow_rate))
+
+    def max_test_current(self, current):
+        self.logger.debug('Max Test Current: ' + str(current))
+
+    def confirmation_box(self, message):  # TODO: Not an abstract method
         """
         Pop-up box for confirming an action.
         :param message: message that will be displayed in pop-up window
@@ -198,7 +220,7 @@ class MonitorWindow(MonitorWindowBase):
             print("Raw Data Not Saved")
 
     def save_test(self):
-        self.logger.debug('Saving Test (WIP)')
+        self.logger.debug('Saving Test [WIP]')
 
     def load_test(self):
         """
@@ -219,10 +241,15 @@ class MonitorWindow(MonitorWindowBase):
         """ Function for updating all test parameters """
         self.title.setText("FAIRBattery Testing Software - " + self.test_config['test_file'])
         self.test_mode_tabs.setCurrentIndex(self.test_config['test']['test_mode'])
+        self.target_selection_tabs.setCurrentIndex(self.test_config['test']['charge_mode'])
+        self.charge_radiobutton.setChecked(self.test_config['test']['(dis)charge'])
+        self.discharge_radiobutton.setChecked(not self.test_config['test']['(dis)charge'])
         self.target_voltage_spinbox.setValue(self.test_config['test']['target_voltage'])
+        self.target_current_spinbox.setValue(self.test_config['test']['target_current'])
+        self.target_resistance_spinbox.setValue(self.test_config['test']['target_resistance'])
         self.max_time_spinbox.setValue(self.test_config['test']['max_test_time'])
-        self.max_voltage_spinbox.setValue(self.test_config['test']['max_test_voltage'])
-        self.min_voltage_spinbox.setValue(self.test_config['test']['min_test_voltage'])
+        self.max_cell_voltage_spinbox.setValue(self.test_config['test']['max_test_voltage'])
+        self.min_cell_voltage_spinbox.setValue(self.test_config['test']['min_test_voltage'])
         self.max_current_spinbox.setValue(self.test_config['test']['max_current'])
         self.flow_rate_spinbox.setValue(self.test_config['test']['flow_rate'])
         self.shunt_resistance = self.test_config['hardware']['shunt_resistance']
@@ -231,7 +258,7 @@ class MonitorWindow(MonitorWindowBase):
         self.logger.debug('Parameters Updated')
 
     def run_cv_test(self):
-        self.operator.enable_pps(True)
+        #self.operator.enable_pps(True)
         increment = 0.01
         if self.operator.analog_monitor_1[-1] < self.target_voltage:
             self.out_voltage += increment
@@ -241,11 +268,11 @@ class MonitorWindow(MonitorWindowBase):
         print(self.out_voltage)
 
     def run_cc_test(self):
-        self.operator.enable_pps(True)
+        #self.operator.enable_pps(True)
         increment = 0.01
-        if self.buffer_current[-1] < self.target_current-5:
+        if self.buffer_current[-1] < self.target_current - 5:
             self.out_voltage += increment
-        elif self.buffer_current[-1] > self.target_current+5:
+        elif self.buffer_current[-1] > self.target_current + 5:
             self.out_voltage -= increment
         self.operator.pps_out(0, self.out_voltage)
         print(self.buffer_current[-1], self.target_current, self.out_voltage)
@@ -487,17 +514,20 @@ class MonitorWindow(MonitorWindowBase):
         Checks if thread is still running and if not: stops timer and reset gui elements
         (called by timer)
         """
+        from datetime import timedelta
         if self.operator._new_monitor_data:
             self.operator._new_monitor_data = False
             self.curve1.setData(self.operator.analog_monitor_time, self.operator.analog_monitor_1)
             self.label_1.setValue(self.operator.analog_monitor_1[-1])
-            self.measured_voltage.setText(str(round(self.operator.analog_monitor_2[-1], 2)))
+            self.measured_voltage_lineedit.setText(str(round(self.operator.analog_monitor_2[-1], 2)))
             shunt_voltage = self.operator.analog_monitor_2[-1] - self.operator.analog_monitor_1[-1]
             shunt_voltage = shunt_voltage if shunt_voltage > 0 else 0
             self.current = round((shunt_voltage / self.shunt_resistance) * 1000, 2)
-            self.measured_current.setText(str(self.current))
-            self.elapsed_time.setTime(
-                QtCore.QTime(00, 00, 00).addMSecs(int(self.operator.analog_monitor_time[-1] * 1000)))
+            self.measured_current_lineedit.setText(str(self.current))
+            time_elasped = timedelta(seconds=round(self.operator.analog_monitor_time[-1], 1))
+            self.time_elapsed_value.setText(':'.join(str(time_elasped).split(':')[:3]))
+            #self.time_elapsed.setTime(
+            #    QtCore.QTime(00, 00, 00).addMSecs(int(self.operator.analog_monitor_time[-1] * 1000)))
 
             self.buffer_time = np.append(self.buffer_time, self.operator.analog_monitor_time[-1])
             self.buffer_voltage = np.append(self.buffer_voltage, self.operator.analog_monitor_1[-1])
@@ -809,14 +839,14 @@ class ScanWindow(ScanWindowBase):
 
 
 if __name__ == "__main__":
-    import labphew  # import this to use labphew style logging
+    import Battery_Testing_Software.labphew  # import this to use labphew style logging
     import sys
     from PyQt5.QtWidgets import QApplication
-    from labphew.model.analog_discovery_2_model import Operator
+    from Battery_Testing_Software.labphew.model.analog_discovery_2_model import Operator
 
     logging.info('Connecting to AD2 Device')
     # To use with real device
-    from labphew.controller.digilent.waveforms import DfwController
+    from Battery_Testing_Software.labphew.controller.digilent.waveforms import DfwController
 
     # To test with simulated device
     # from labphew.controller.digilent.waveforms import SimulatedDfwController as DfwController
@@ -834,7 +864,8 @@ if __name__ == "__main__":
         os.environ['QT_MAC_WANTS_LAYER'] = '1'  # added to fix operation on mac
 
     app = QApplication(sys.argv)
-    app_icon = QIcon(os.path.join(labphew.package_path, 'view', 'design', 'icons', 'labphew_icon.png'))
+    app_icon = QIcon(os.path.join(Battery_Testing_Software.labphew.package_path, 'view', 'design',
+                                  '../../../../Battery_Testing_Software/labphew/view/design/icons', 'labphew_icon.png'))
     app.setWindowIcon(app_icon)  # set an app icon
     gui = MonitorWindow(opr)
     gui.show()
