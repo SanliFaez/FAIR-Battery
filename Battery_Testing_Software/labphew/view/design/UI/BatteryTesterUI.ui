@@ -346,7 +346,7 @@
                   <bool>true</bool>
                  </property>
                  <property name="maximum">
-                  <double>4.000000000000000</double>
+                  <double>4.500000000000000</double>
                  </property>
                  <property name="singleStep">
                   <double>0.100000000000000</double>
@@ -568,7 +568,7 @@
             <item>
              <widget class="QLabel" name="time_elapsed_value">
               <property name="text">
-               <string>0h 0m 0s</string>
+               <string>0:00:00.00</string>
               </property>
              </widget>
             </item>

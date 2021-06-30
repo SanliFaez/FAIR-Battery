@@ -255,7 +255,7 @@ class Operator(OperatorBase):
             # in stead of sleep, calculate when the next datapoint should be acquired and wait until that time arrives
             # this allows to keep the timing correct
             next_time += self.properties['monitor']['time_step']
-            while time()-self._monitor_start_time<next_time:
+            while time()-self._monitor_start_time < next_time:
                 if self._stop: break  # check for stop flag while waiting to move to next point
         self._stop = False  # reset stop flag to false
         self._busy = False  # indicate the operator is not busy anymore

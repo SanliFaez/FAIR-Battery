@@ -67,7 +67,8 @@ class MonitorWindow(MonitorWindowBase):
         self.monitor_timer.timeout.connect(self.update_monitor)
         self.monitor_thread = WorkThread(self.operator._monitor_loop)
 
-        self.test_mode = 0  # defaults to CV mode
+        self.test_selection = 0  # Defaults to Charge/Discharge mode
+        self.test_mode = 0  # Defaults to CV mode
         self.end_time = 0
 
         self.target_voltage = 0
@@ -147,7 +148,7 @@ class MonitorWindow(MonitorWindowBase):
             self.start_button.setEnabled(False)
             self.reset_button.setEnabled(False)
             self.end_time = time() + (self.max_test_time * 60)
-            self.out_voltage = self.target_voltage
+            self.out_voltage = self.operator.instrument.read_analog()[0]  # Start test at measured cell voltage
 
     def stop_test_button(self):
         """
@@ -156,7 +157,7 @@ class MonitorWindow(MonitorWindowBase):
         - flags the operator to stop
         - uses the Workthread stop method to wait a bit for the operator to finish, or terminate thread if timeout occurs
         """
-        #self.operator.pps_out(0, 0.6)
+        self.operator.pps_out(0, 0.6)
         if not self.monitor_thread.isRunning():
             self.logger.debug('Monitor is not running')
             return
@@ -179,10 +180,11 @@ class MonitorWindow(MonitorWindowBase):
         pass
 
     def test_selection(self, selection):
-        self.test_mode = selection
+        self.test_selection = selection
         self.logger.debug('CV (0) / CC (1) / CR (2): ' + str(selection))
 
     def test_mode(self, mode):
+        self.test_mode = mode
         self.logger.debug('Charge/Discharge (0) / Impedance (1): ' + str(mode))
 
     def charge_mode(self, charge_mode):
@@ -205,7 +207,7 @@ class MonitorWindow(MonitorWindowBase):
         return True if ret == QMessageBox.Yes else False
 
     def save_raw_data(self):
-        print("Saving Raw Data...")
+        self.logger.debug("Saving Raw Data...")
         import numpy
         a = numpy.asarray([self.buffer_time, self.buffer_voltage, self.buffer_current])
 
@@ -213,11 +215,11 @@ class MonitorWindow(MonitorWindowBase):
         print(file_type)
         if name:
             filename = name if ".csv" in name else name + ".csv"
-            numpy.savetxt(filename, a.T, delimiter=",", header="Time (s), Cell Voltage (V), Current (mA)")
+            numpy.savetxt(filename, a.T, delimiter=",", header="Time (s), Cell Voltage (V), Current (mA)", fmt='%1.3f')
             print(self.buffer_time.shape)
-            print("Test", filename, "Saved")
+            self.logger.debug("Test " + filename + " Saved")
         else:
-            print("Raw Data Not Saved")
+            self.logger.error("Raw Data Not Saved")
 
     def save_test(self):
         self.logger.debug('Saving Test [WIP]')
@@ -258,24 +260,27 @@ class MonitorWindow(MonitorWindowBase):
         self.logger.debug('Parameters Updated')
 
     def run_cv_test(self):
-        #self.operator.enable_pps(True)
+        self.operator.enable_pps(True)
         increment = 0.01
         if self.operator.analog_monitor_1[-1] < self.target_voltage:
             self.out_voltage += increment
         elif self.operator.analog_monitor_1[-1] > self.target_voltage:
             self.out_voltage -= increment
         self.operator.pps_out(0, self.out_voltage)
-        print(self.out_voltage)
+        #print(self.out_voltage)
 
     def run_cc_test(self):
-        #self.operator.enable_pps(True)
+        self.operator.enable_pps(True)
         increment = 0.01
         if self.buffer_current[-1] < self.target_current - 5:
             self.out_voltage += increment
         elif self.buffer_current[-1] > self.target_current + 5:
             self.out_voltage -= increment
         self.operator.pps_out(0, self.out_voltage)
-        print(self.buffer_current[-1], self.target_current, self.out_voltage)
+        #print(self.buffer_current[-1], self.target_current, self.out_voltage)
+
+    def run_impedance_test(self):  # TODO: implement impedance test
+        pass
 
     def set_UI(self):
         """ Code-based generation of the user-interface based on PyQT """
@@ -524,10 +529,14 @@ class MonitorWindow(MonitorWindowBase):
             shunt_voltage = shunt_voltage if shunt_voltage > 0 else 0
             self.current = round((shunt_voltage / self.shunt_resistance) * 1000, 2)
             self.measured_current_lineedit.setText(str(self.current))
-            time_elasped = timedelta(seconds=round(self.operator.analog_monitor_time[-1], 1))
-            self.time_elapsed_value.setText(':'.join(str(time_elasped).split(':')[:3]))
-            #self.time_elapsed.setTime(
-            #    QtCore.QTime(00, 00, 00).addMSecs(int(self.operator.analog_monitor_time[-1] * 1000)))
+            time_elapsed = timedelta(seconds=round(self.operator.analog_monitor_time[-1], 1))
+
+            timestr = str(time_elapsed).split('.') # TODO: this section needs a one-liner
+            if len(timestr) == 1:
+                timestr.append("00")
+            else:
+                timestr[1] = timestr[1][0:2]
+            self.time_elapsed_value.setText(".".join(timestr))
 
             self.buffer_time = np.append(self.buffer_time, self.operator.analog_monitor_time[-1])
             self.buffer_voltage = np.append(self.buffer_voltage, self.operator.analog_monitor_1[-1])
@@ -536,10 +545,14 @@ class MonitorWindow(MonitorWindowBase):
         if time() >= self.end_time:
             self.stop_test_button()
 
-        if self.test_mode == 0:
-            self.run_cv_test()
-        elif self.test_mode == 1:
-            self.run_cc_test()
+        if self.test_selection == 0:  # If Charge/Discharge mode is selected
+            if self.test_mode == 0:  # TODO: implement discharge function
+                self.run_cv_test()
+            elif self.test_mode == 1:
+                self.run_cc_test()
+
+        if self.test_selection == 1:
+            self.run_impedance_test()
 
         if self.monitor_thread.isFinished():
             self.logger.debug('Monitor thread is finished')
