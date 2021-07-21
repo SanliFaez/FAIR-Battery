@@ -173,9 +173,9 @@ class MonitorWindow(MonitorWindowBase):
     def reset_test_button(self):
         self.logger.debug('Resetting monitor')
         self.curve1.setData((0, 0), (0, 0))
-        self.label_1.setValue(0)
-        self.measured_voltage.setText("0.00")
-        self.measured_current.setText("0.00")
+        # self.label_1.setValue(0)
+        self.measured_voltage_lineedit.setText("0.00")
+        self.measured_current_lineedit.setText("0.00")
         self.operator.pps_out(0, 4)
         pass
 
@@ -199,6 +199,7 @@ class MonitorWindow(MonitorWindowBase):
     def confirmation_box(self, message):  # TODO: Not an abstract method
         """
         Pop-up box for confirming an action.
+
         :param message: message that will be displayed in pop-up window
         :type message: str
         :return: bool
@@ -243,9 +244,9 @@ class MonitorWindow(MonitorWindowBase):
         """ Function for updating all test parameters """
         self.title.setText("FAIRBattery Testing Software - " + self.test_config['test_file'])
         self.test_mode_tabs.setCurrentIndex(self.test_config['test']['test_mode'])
-        self.target_selection_tabs.setCurrentIndex(self.test_config['test']['charge_mode'])
-        self.charge_radiobutton.setChecked(self.test_config['test']['(dis)charge'])
-        self.discharge_radiobutton.setChecked(not self.test_config['test']['(dis)charge'])
+        self.target_selection_tabs.setCurrentIndex(self.test_config['test']['test_selection'])
+        self.charge_radiobutton.setChecked(self.test_config['test']['charge_mode'])
+        self.discharge_radiobutton.setChecked(not self.test_config['test']['charge_mode'])
         self.target_voltage_spinbox.setValue(self.test_config['test']['target_voltage'])
         self.target_current_spinbox.setValue(self.test_config['test']['target_current'])
         self.target_resistance_spinbox.setValue(self.test_config['test']['target_resistance'])
@@ -545,13 +546,13 @@ class MonitorWindow(MonitorWindowBase):
         if time() >= self.end_time:
             self.stop_test_button()
 
-        if self.test_selection == 0:  # If Charge/Discharge mode is selected
-            if self.test_mode == 0:  # TODO: implement discharge function
+        if self.test_mode == 0:  # If Charge/Discharge mode is selected
+            if self.test_selection == 0:  # TODO: implement discharge function
                 self.run_cv_test()
-            elif self.test_mode == 1:
+            elif self.test_selection == 1:
                 self.run_cc_test()
 
-        if self.test_selection == 1:
+        if self.test_mode == 1:
             self.run_impedance_test()
 
         if self.monitor_thread.isFinished():
