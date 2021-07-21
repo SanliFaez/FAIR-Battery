@@ -2,8 +2,8 @@ test_file:          "current_test_example.csv"
 
 test:
   test_mode:          0     # 0 = Charge/Discharge, 1 = Impedance Analysis
-  (dis)charge:        True  # True = Charge, False = Discharge {Only applicable for mode 0 (Charge/Discharge)}
-  charge_mode:        1     # 0 = CV, 1 = CC, 2 = CR
+  charge_mode:        True  # True = Charge, False = Discharge {Only applicable for mode 0 (Charge/Discharge)}
+  test_selection:     1     # 0 = CV, 1 = CC, 2 = CR
   target_voltage:     0     # [V] Only applicable for mode 0 (CV)
   target_current:     80    # [mA] Only applicable for mode 1 (CC)
   target_resistance:  0     # [Ohms] Only applicable for mode 2 (CR)
