@@ -1042,8 +1042,8 @@
    <slot>target_current()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>271</x>
-     <y>177</y>
+     <x>310</x>
+     <y>188</y>
     </hint>
     <hint type="destinationlabel">
      <x>400</x>
@@ -1058,8 +1058,8 @@
    <slot>target_resistance()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>280</x>
-     <y>175</y>
+     <x>340</x>
+     <y>188</y>
     </hint>
     <hint type="destinationlabel">
      <x>385</x>
@@ -1074,8 +1074,8 @@
    <slot>min_frequency()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>278</x>
-     <y>148</y>
+     <x>316</x>
+     <y>156</y>
     </hint>
     <hint type="destinationlabel">
      <x>397</x>
@@ -1090,8 +1090,8 @@
    <slot>min_frequency()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>290</x>
-     <y>180</y>
+     <x>316</x>
+     <y>190</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -1106,8 +1106,8 @@
    <slot>steps_per_decade()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>267</x>
-     <y>217</y>
+     <x>300</x>
+     <y>224</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -1135,7 +1135,23 @@
    <sender>actionSave_Raw_Data</sender>
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
-   <slot>save_raw_data()</slot>
+   <slot>export_raw_data()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>512</x>
+     <y>360</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionFigure</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>export_figure()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -1157,7 +1173,7 @@
   <slot>start_test_button()</slot>
   <slot>stop_test_button()</slot>
   <slot>reset_test_button()</slot>
-  <slot>save_raw_data()</slot>
+  <slot>export_raw_data()</slot>
   <slot>save_test()</slot>
   <slot>load_test()</slot>
   <slot>max_test_current()</slot>
@@ -1169,5 +1185,6 @@
   <slot>min_frequency()</slot>
   <slot>max_frequency()</slot>
   <slot>steps_per_decade()</slot>
+  <slot>export_figure()</slot>
  </slots>
 </ui>
