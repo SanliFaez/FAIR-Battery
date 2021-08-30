@@ -15,7 +15,7 @@ If you are still in the learning phase, or would like to stay compatible with th
 these recommendations might help you in getting your desired features rather quickly.
 
 Software Structure
-^^^^^^^^^^^^^^^^^
+******************
 In order to get you started quickly, below is a quick summary of how the code is structured.
 For a more in depth explanation of how this project's software is structured, see
 the `labphew documentation <https://labphew.readthedocs.io/en/latest/walkthrough.html>`_.
