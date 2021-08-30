@@ -19,10 +19,10 @@ Examples of how to use can be found at the end of the file under if __name__=='_
 """
 import numpy as np
 import pyqtgraph as pg  # used for additional plotting features
-from PyQt5 import uic, QtGui
-from PyQt5.QtCore import QTimer
+from PyQt5 import uic
+from PyQt5.QtCore import QTimer, QRectF
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QPixmap, QPainter
 
 import yaml
 import Battery_Testing_Software.labphew
@@ -78,7 +78,7 @@ class MonitorWindow(MonitorWindowBase):
         self.shunt_resistance = 0.24
 
     def set_graph(self):
-        """ Initialize graphs"""
+        """Initialize setting for graphs"""
         self.graphicsView.setBackground('k')
         self.plot1 = self.graphicsView.addPlot()
         self.plot1.setLabel('bottom', 'Time', units='s')
@@ -207,20 +207,41 @@ class MonitorWindow(MonitorWindowBase):
         ret = QMessageBox.question(self, 'ConfirmationBox', message, QMessageBox.Yes | QMessageBox.No)
         return True if ret == QMessageBox.Yes else False
 
-    def save_raw_data(self):
+    def export_raw_data(self):
         self.logger.debug("Saving Raw Data...")
         import numpy
-        a = numpy.asarray([self.buffer_time, self.buffer_voltage, self.buffer_current])
+        try:
+            a = numpy.asarray([self.buffer_time, self.buffer_voltage, self.buffer_current])
 
-        name, file_type = QtGui.QFileDialog.getSaveFileName(self, 'Save Test')
-        print(file_type)
+            name, file_type = QFileDialog.getSaveFileName(self, 'Save Raw Data')
+            if name:
+                filename = name if ".csv" in name else name + ".csv"
+                numpy.savetxt(filename, a.T, delimiter=",", header="Time (s), Cell Voltage (V), Current (mA)", fmt='%1.3f')
+                self.logger.debug("Test " + filename + " saved")
+            else:
+                self.logger.error("Raw Data Not Saved")
+        except AttributeError:
+            self.logger.error("No Data Collected to Export")  # An attribute error will be thrown as there is no self.buffer_time yet when tests have not run
+
+    def export_figure(self):
+        self.logger.debug("Saving Figure...")
+        name, file_type = QFileDialog.getSaveFileName(self, 'Save Figure')
         if name:
-            filename = name if ".csv" in name else name + ".csv"
-            numpy.savetxt(filename, a.T, delimiter=",", header="Time (s), Cell Voltage (V), Current (mA)", fmt='%1.3f')
-            print(self.buffer_time.shape)
-            self.logger.debug("Test " + filename + " Saved")
+            filename = name if ".png" in name else name + ".png"
+
+            # Get the size of your graphicsView
+            rect = self.graphicsView.viewport().rect()
+            # Create a pixmap the same size as your graphicsView
+            # You can make this larger or smaller if you want.
+            pixmap = QPixmap(rect.size())
+            painter = QPainter(pixmap)
+            # Render the graphicsView onto the pixmap and save it out.
+            self.graphicsView.render(painter, QRectF(pixmap.rect()), rect)
+            pixmap.save(filename)
+            painter.end()
+            self.logger.debug("Figure " + filename + " saved")
         else:
-            self.logger.error("Raw Data Not Saved")
+            self.logger.error("Figure Not Saved")
 
     def save_test(self):
         self.logger.debug('Saving Test [WIP]')
@@ -232,7 +253,7 @@ class MonitorWindow(MonitorWindowBase):
         :param filename: Path to the filename. Defaults to analog_discovery_2_config.yml in labphew.core.defaults
         :type filename: str
         """
-        filename, file_type = QtGui.QFileDialog.getOpenFileName(self, 'Load Test')
+        filename, file_type = QFileDialog.getOpenFileName(self, 'Load Test')
         with open(filename, 'r') as f:
             self.test_config = yaml.safe_load(f)
         self.test_config['config_file'] = filename
@@ -598,93 +619,6 @@ class ScanWindow(ScanWindowBase):
         # create thread and timer objects for scan
         self.scan_timer = QTimer(timeout=self.update_scan)
         self.scan_thread = WorkThread(self.operator.do_scan)
-
-    def set_UI(self):
-        """
-        Code-based generation of the user-interface based on PyQT
-        """
-
-        self.setWindowTitle('Digilent AD2 Scan example')
-        # display statusbar
-        self.statusBar()
-        ### The menu bar:
-        mod_config_action = QAction("Con&fig", self, triggered=self.mod_scan_config, shortcut="Ctrl+Shift+C",
-                                    statusTip='Modify the scan config')
-        quit_action = QAction("&Close", self, triggered=self.close, shortcut="Ctrl+W",
-                              statusTip='Close the scan window')
-
-        mainMenu = self.menuBar()
-        fileMenu = mainMenu.addMenu('&File')
-        fileMenu.addAction(mod_config_action)
-        fileMenu.addAction(quit_action)
-
-        ### General layout
-        central_widget = QWidget()
-        central_layout = QHBoxLayout(central_widget)
-
-        # Layout for left hand controls
-        control_layout = QVBoxLayout()
-
-        ### Scan box
-        self.box_scan = QGroupBox('Scan')
-        layout_scan = QVBoxLayout()
-        self.box_scan.setLayout(layout_scan)
-        control_layout.addWidget(self.box_scan)
-
-        layout_scan_form = QFormLayout()
-        layout_scan.addLayout(layout_scan_form)
-        layout_scan_buttons = QHBoxLayout()
-        layout_scan.addLayout(layout_scan_buttons)
-
-        self.scan_start_spinbox = QDoubleSpinBox(suffix='V', minimum=-100, singleStep=0.001,
-                                                 valueChanged=self.scan_start_value)
-        # self.scan_start_spinbox.valueChanged.connect(self.scan_start_value)
-
-        self.scan_stop_spinbox = QDoubleSpinBox(suffix='V', minimum=-100, singleStep=0.001,
-                                                valueChanged=self.scan_stop_value)
-
-        self.scan_step_spinbox = QDoubleSpinBox(suffix='V', minimum=-100, singleStep=0.001,
-                                                valueChanged=self.scan_step_value)
-
-        self.scan_start_label = QLabel('start')
-        self.scan_stop_label = QLabel('stop')
-        self.scan_step_label = QLabel('step')
-        layout_scan_form.addRow(self.scan_start_label, self.scan_start_spinbox)
-        layout_scan_form.addRow(self.scan_stop_label, self.scan_stop_spinbox)
-        layout_scan_form.addRow(self.scan_step_label, self.scan_step_spinbox)
-
-        self.start_button = QPushButton('Start', clicked=self.start_scan)
-        self.pause_button = QPushButton('Pause', clicked=self.pause_scan)
-        self.stop_button = QPushButton('Stop', clicked=self.stop_scan)
-        self.kill_button = QPushButton('Kill', clicked=self.kill_scan)
-        # Haven't decided what names are best. Suggestions:
-        # start, pause, interrupt, stop, abort, quit, kill
-
-        layout_scan_buttons.addWidget(self.start_button)
-        layout_scan_buttons.addWidget(self.pause_button)
-        layout_scan_buttons.addWidget(self.stop_button)
-        layout_scan_buttons.addWidget(self.kill_button)
-
-        self.saver = SaverWidget(self.operator.save_scan)
-        layout_scan.addWidget(self.saver)
-
-        ### Graphs:
-        self.graph_win = pg.GraphicsWindow()
-        self.graph_win.resize(1000, 600)
-        self.plot1 = self.graph_win.addPlot()
-        self.curve1 = self.plot1.plot(pen='y')
-
-        # Add an empty widget at the bottom of the control layout to make layout nicer
-        dummy = QWidget()
-        dummy.setSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
-        control_layout.addWidget(dummy)
-        # Add control layout and graph window to central layout and apply central layout to window
-        central_layout.addLayout(control_layout)
-        central_layout.addWidget(self.graph_win)
-        self.setCentralWidget(central_widget)
-
-        self.apply_properties()
-        self.reset_fields()
 
     def mod_scan_config(self):
         """
