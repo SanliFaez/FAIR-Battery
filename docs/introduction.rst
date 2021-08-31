@@ -19,7 +19,7 @@ Where to start?
 ---------------
 
 There is no unique good path to browse these docs. If you want to learn more about the FAIR-Battery modules,
-you can consider checking the :doc:`walkthrough`.
+you can consider checking the :doc:`FAIR-Battery 101`.
 
 How the name was chosen
 -----------------------
@@ -31,7 +31,4 @@ generates strive to abide by. For more information visit this link: https://www.
 Glossary of Terms:
 ------------------
 
-Frequently used acronyms
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-    + AD2: The Analog Discovery 2 Board from Digilent
+    + AD2: The Analog Discovery 2 Board made by Digilent. In this project it is used as a hardware controller, for battery testing.
