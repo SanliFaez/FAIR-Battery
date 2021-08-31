@@ -13,8 +13,8 @@
 import os
 import sys
 # sys.path.insert(0, os.path.abspath('.'))
-labphew_package_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../labphew'))
-sys.path.insert(0, labphew_package_dir)
+fairbattery_package_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../Battery_Testing_Software'))
+sys.path.insert(0, fairbattery_package_dir)
 # sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath('.')), 'controller'))
 # sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath('.')), 'model'))
 # sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath('.')), 'view'))
