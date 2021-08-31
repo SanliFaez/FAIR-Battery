@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'FAIR Battery'
+project = 'FAIR-Battery'
 copyright = '2021, Sanli Faez'
 author = 'Sanli Faez'
 
