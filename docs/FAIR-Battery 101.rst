@@ -11,6 +11,7 @@ Navigate to a directory where you want to install the project:
 
 NOTE: you need to have `git <https://github.com/git-guides/install-git#:~:text=To%20install%20Git%2C%20run%20the,installation%20by%20typing%3A%20git%20version%20.
 >`_ installed
+
 .. code::
     cd parent/directory/for/project
     git clone
