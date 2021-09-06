@@ -813,7 +813,7 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     app_icon = QIcon(os.path.join(Battery_Testing_Software.labphew.package_path, 'view', 'design',
-                                  '../../../../Battery_Testing_Software/labphew/view/design/icons', 'labphew_icon.png'))
+                                  '../../labphew/view/design/icons', 'labphew_icon.png'))
     app.setWindowIcon(app_icon)  # set an app icon
     gui = MonitorWindow(opr)
     gui.show()
