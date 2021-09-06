@@ -101,7 +101,7 @@ results from different contributing groups easy to compare. In order to achieve 
 _Software for Battery Testing_
 
 We have developed an open-srouce python code that works on any major computer platform.
-You can check the installation guide and further documentation on [link to read the docs]
+You can check the installation guide and further documentation on [readthedocs](https://fair-battery.readthedocs.io/en/latest/index.html).
 
 The software is a fork of the Labphew project: https://github.com/SanliFaez/labphew.
 
