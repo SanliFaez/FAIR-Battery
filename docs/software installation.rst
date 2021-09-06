@@ -16,7 +16,7 @@ but we have not tested it yet.
 
     git clone https://github.com/SanliFaez/FAIR-Battery.git
     cd FAIR-Battery
-    pip install .
+    pip install -r Battery_Testing_Software/requirements.txt
 
 If you want to start editing or adding to the code, we recommend that you fork the repository first to your own account
 and install it from there. This way of installation allows you to stay connected with the FAIR-Battery repository and when
@@ -25,13 +25,6 @@ needed, rebase to future releases.
 Getting started
 ---------------
 
-Once you have installed FAIR-Battery successfully, you can test your installation by using the following from the
-command line.
-
-.. code::
-    labphew start blink -d
-
-You can expect a labphew window with with you can interact. To go further,
-you can consider checking the :doc:`./walkthrough`.
+Once you have installed FAIR-Battery successfully, you can test your installation by following the :doc:`FAIR-Battery 101`.
 
 

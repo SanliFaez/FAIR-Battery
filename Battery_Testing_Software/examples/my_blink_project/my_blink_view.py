@@ -33,6 +33,9 @@ from labphew.core.base.general_worker import WorkThread
 from labphew.core.tools.gui_tools import fit_on_screen, ModifyConfig
 from labphew.core.base.view_base import MonitorWindowBase, ScanWindowBase
 
+import Battery_Testing_Software
+
+
 class MonitorWindow(MonitorWindowBase):
     def __init__(self, operator, parent=None):
         """
@@ -380,13 +383,20 @@ class ScanWindow(ScanWindowBase):
 if __name__ == '__main__':
     from my_blink_controller import BlinkController
     from my_blink_model import BlinkOperator
+    import Battery_Testing_Software.labphew  # import this to use labphew style logging
+
+    import platform
+
+    if platform.system() == 'Darwin':
+        os.environ['QT_MAC_WANTS_LAYER'] = '1'  # added to fix operation on mac
 
     instr = BlinkController()
     opr = BlinkOperator(instr)
     opr.load_config()
 
     app = QApplication([])
-    app_icon = QIcon(os.path.join(labphew.package_path, 'view', 'design', 'icons', 'labphew_icon.png'))
+    app_icon = QIcon(os.path.join(Battery_Testing_Software.labphew.package_path, 'view', 'design',
+                                  '../../labphew/view/design/icons', 'labphew_icon.png'))
     app.setWindowIcon(app_icon)  # set an icon
     window = MonitorWindow(opr)
 

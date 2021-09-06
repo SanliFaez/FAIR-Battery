@@ -5,11 +5,15 @@ FAIR-Battery 101
 As a "Hello World' this page will be going through the basic startup process, to get you up and running as
 soon as possible. For a more details on installation see :doc:`software installation`.
 
-For Mac / Linux
-----------------
+Warning: Not yet tried on linux, although the steps should be very similar to the "For Mac" section.
 
-Step 1: Installation
-^^^^^^^^^^^^^^^^^^^^
+For Mac
+-------
+
+First you will need to install the waveforms SDK. It can be downloaded from the `Digilent site <https://mautic.digilentinc.com/waveforms-download>`_.
+
+NOTE: In the installer dragging the app to Applications is optional, but the "Waveforms SDK" MUST be added to your frameworks!
+
 You need to have `git <https://github.com/git-guides/install-git#:~:text=To%20install%20Git%2C%20run%20the,installation%20by%20typing%3A%20git%20version%20.>`_ installed first. Then in a terminal:
 
 .. code::
@@ -37,9 +41,8 @@ Next complete the installation by running:
     cd FAIR-Battery/
     pip3 install -r Battery_Testing_Software/requirements.txt
 
-Step 2: Running
-^^^^^^^^^^^^^^^
 If this completes successfully, you should be ready to open up some testing software.
+
 First connect the usb of the AD2, then in path FAIR-Battery/ run:
 
 .. code::
@@ -51,9 +54,7 @@ First connect the usb of the AD2, then in path FAIR-Battery/ run:
 For Windows
 -----------
 
-Step 1: Installation
-^^^^^^^^^^^^^^^^^^^^
-First you will need to install the waveforms SDK. It can be downloaded from the `digilent site <https://mautic.digilentinc.com/waveforms-download>`_.
+First you will need to install the waveforms SDK. It can be downloaded from the `Digilent site <https://mautic.digilentinc.com/waveforms-download>`_.
 
 NOTE: In the installer choosing the app is optional, but the "Waveforms SDK" is mandatory!
 
@@ -91,11 +92,7 @@ Next complete the installation by running:
 
 If this completes successfully, you should be ready to open up some testing software.
 
-Step 2: Running
-^^^^^^^^^^^^^^^
 First connect the usb of the AD2, then in path FAIR-Battery/ run:
-
-Add project to environment variables and run:
 
 .. code::
 

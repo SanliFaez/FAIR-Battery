@@ -14,13 +14,17 @@ from labphew.core.tools.gui_tools import open_config_dialog
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtGui import QIcon
 import os
+import Battery_Testing_Software.labphew
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # Optionally place the path to your default config file here:
-default_config = os.path.join(os.path.dirname(__name__), 'my_blink_config.yml')
+default_config = os.path.join(Battery_Testing_Software.labphew.package_path, 'view', 'design',
+                              '../../labphew/view/design/icons', 'labphew_icon.png')
+
+
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-def main(config_file = default_config):
+def main(config_file=default_config):
     """
     Starts the GUI of the Blink example.
     Note, if config_file is not specified, or is set to '-default' or '-d', it will fall back to a default file
@@ -33,10 +37,10 @@ def main(config_file = default_config):
     """
 
     # If -browse (or -b) is used for config_file, display an open file dialog:
-    if config_file=='-browse' or config_file=='-b':
+    if config_file == '-browse' or config_file == '-b':
         config_file = open_config_dialog()
     # If -default (or -d) is used for config_file, switch it out for the default specified in the top of this file:
-    if config_file=='-default' or config_file=='-d':
+    if config_file == '-default' or config_file == '-d':
         config_file = default_config
         print('Using default_config file specified in {}'.format(__name__))
     if config_file is None:
@@ -52,7 +56,7 @@ def main(config_file = default_config):
     instr = BlinkController()
     opr = BlinkOperator(instr)
 
-    opr.load_config( config_file )
+    opr.load_config(config_file)
 
     # Create a PyQt application:
     app = QApplication([])
