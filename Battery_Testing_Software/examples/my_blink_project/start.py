@@ -14,15 +14,14 @@ from labphew.core.tools.gui_tools import open_config_dialog
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtGui import QIcon
 import os
-import Battery_Testing_Software.labphew
+import Battery_Testing_Software
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # Optionally place the path to your default config file here:
-default_config = os.path.join(Battery_Testing_Software.labphew.package_path, 'view', 'design',
-                              '../../labphew/view/design/icons', 'labphew_icon.png')
-
+default_config = 'Battery_Testing_Software/examples/my_blink_project/my_blink_config.yml'
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 
 def main(config_file=default_config):
     """
