@@ -18,7 +18,8 @@ import Battery_Testing_Software
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # Optionally place the path to your default config file here:
-default_config = 'Battery_Testing_Software/examples/my_blink_project/my_blink_config.yml'
+default_config = os.path.join(Battery_Testing_Software.package_path, 'examples', 'my_blink_project',
+                              'my_blink_config.yml')
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
