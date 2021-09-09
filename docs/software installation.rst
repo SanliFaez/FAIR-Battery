@@ -1,5 +1,5 @@
 **************
-How to install [WIP]
+How to Install
 **************
 
 Currently there is only one way to install the FAIR-Battery testing software, and that is from the source.
@@ -15,7 +15,7 @@ but we have not tested it yet.
 .. code::
 
     git clone https://github.com/SanliFaez/FAIR-Battery.git
-    cd FAIR-Battery
+    cd FAIR-Battery/
     pip install -r Battery_Testing_Software/requirements.txt
 
 If you want to start editing or adding to the code, we recommend that you fork the repository first to your own account

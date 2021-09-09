@@ -1,5 +1,5 @@
 ****************************
-Introduction to FAIR-Battery  [WIP]
+Introduction to FAIR-Battery
 ****************************
 
 In the FAIR-Battery project, we aim to create an open-source electrochemical battery
