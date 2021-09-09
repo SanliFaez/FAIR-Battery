@@ -10,5 +10,5 @@ Other small issues can be reported via the `issue tracker <https://github.com/Sa
 
 Adding examples
 ---------------
-If you have customized labphew for your own project, please consider stripping your additional code in to
+If you have customized FAIR-Battery Software for your own project, please consider stripping your additional code in to
 a simplified example that can be added to the examples.

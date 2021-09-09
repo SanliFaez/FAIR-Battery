@@ -27,12 +27,12 @@ The documentation is hosted on `Read The Docs <https://readthedocs.org/projects/
 
    introduction
    unboxing
+   software installation
    FAIR-Battery 101
    technical drawings
-   software installation
+   materials database
    testing a unit
    troubleshooting
-   materials database
    customize
    contribute
 
