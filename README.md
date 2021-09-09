@@ -46,7 +46,7 @@ This project is initiated by:
 The following students are currently contributing to the project
 
 - Catherine Doherty - University College Utrecht
-- Nicolas Barker - Delft University of Technology
+- [Nicolas Barker](https://github.com/Cinbarker) - Delft University of Technology
 - Emre Burak Boz - Technical University of Eindhoven
 
 ### Funding
