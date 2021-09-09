@@ -5,7 +5,7 @@
 
 Hardware, design, and a learning community for building an open-hardware redox-flow battery from the [Center for Unusual Collaborations](https://www.unusualcollaborations.com/)
 
-![FAIR-Battery logo](https://github.com/SanliFaez/FAIR-Battery/docs/_static/fair-battery_logo.png)
+![FAIR-Battery logo](https://github.com/SanliFaez/FAIR-Battery/blob/main/docs/_static/fair-battery_logo.png)
 
 In the _FAIR-Battery_ project, we aim to create an open-source electrochemical battery (FAIR = Findable + Accessible + Interoperable + Reproducible).
 We seek to present an open-hardware platform for a versatile battery technology and make the platform radically accessible:
