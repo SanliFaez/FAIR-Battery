@@ -1,5 +1,5 @@
 ***************
-Troubleshooting  [WIP]
+Troubleshooting
 ***************
 
 Is something not working right? Hopefully the steps below will help you get your battery up and running again, otherwise

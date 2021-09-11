@@ -1,5 +1,5 @@
 *************
-Customization   [WIP]
+Customization
 *************
 
 While one of the goals of this project is to reduce variation in testing methods, this software and hardware is still
