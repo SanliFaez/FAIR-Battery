@@ -3,7 +3,7 @@ FAIR-Battery 101
 ****************
 
 As a "Hello World' this page will be going through the basic startup process, to get you up and running as
-soon as possible. For a more details on installation see :doc:`software installation`.
+soon as possible. For general installation steps see :doc:`software installation`.
 
 Warning: Not yet tried on linux, although the steps should be very similar to the "For Mac" section.
 
@@ -21,7 +21,7 @@ You need to have `git <https://github.com/git-guides/install-git#:~:text=To%20in
     cd parent/directory/of/project
     git clone https://github.com/SanliFaez/FAIR-Battery.git
 
-Next you need to have `python <https://pypi.org/project/pip/>`_ and `pip <https://pypi.org/project/pip/>`_ installed.
+Next you need to have `python <https://www.python.org/downloads/>`_ and `pip <https://pypi.org/project/pip/>`_ installed.
 Verify this by running the following:
 
 .. code::
@@ -65,7 +65,7 @@ Next you need to have `git <https://github.com/git-guides/install-git#:~:text=To
     cd C:\parent\directory\of\project
     git clone https://github.com/SanliFaez/FAIR-Battery.git
 
-Next you need to have `python <https://pypi.org/project/pip/>`_ and `pip <https://pypi.org/project/pip/>`_ installed.
+Next you need to have `python <https://www.python.org/downloads/>`_ and `pip <https://pypi.org/project/pip/>`_ installed.
 
 Make sure to check the "Add Python #.# to PATH" option when installing!
 
