@@ -42,3 +42,5 @@ Glossary of Terms
 ------------------
 
     + AD2: The Analog Discovery 2 Board made by Digilent. In this project it is used as a hardware controller, for battery testing.
+    + PPS: Programmable Power Supply
+    + MVC: The Model, View, Controller code structure

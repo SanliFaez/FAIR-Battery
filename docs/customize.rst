@@ -80,3 +80,9 @@ Views can be both working with command-line interface (CLI) or a graphical user 
 
 An example of this is the ``BatteryTest_View.py`` which has been developed to implement various basic battery testing
 functions.
+
+
+Resources
+^^^^^^^^^
+    + `Waveforms SDK <https://digilent.com/reference/software/waveforms/waveforms-sdk/reference-manual>`_
+    + `AD2 Specs <https://digilent.com/reference/test-and-measurement/analog-discovery-2/reference-manual>`_

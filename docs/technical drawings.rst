@@ -16,3 +16,4 @@ resistance, and therefore calculate the current as simply:
 .. math::
 
     I_{batt} = \frac{V_1-V_2}{R_{shunt}}
+
