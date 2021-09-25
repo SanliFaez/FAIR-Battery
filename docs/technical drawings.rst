@@ -3,6 +3,7 @@ Technical Drawings  [WIP]
 ******************
 
 **Battery Charging Circuit**
+
 This circuit charges a battery using the AD2's programmable power supply (PPS).
 
 .. image:: _static/Charge_Circuit.png
@@ -11,9 +12,9 @@ This circuit charges a battery using the AD2's programmable power supply (PPS).
 
 The charge current is read with the two
 voltmeter channels of the AD2, 1+ and 2+. This allows us to get a differential voltage measurement across a known
-resistance, and therefore calculate the current as simply:
+resistance, and therefore calculate the current simply:
 
 .. math::
 
-    I_{batt} = \frac{V_1-V_2}{R_{shunt}}
+    I_{charge} = I_{shunt} = \frac{V_1-V_2}{R_{shunt}}
 
