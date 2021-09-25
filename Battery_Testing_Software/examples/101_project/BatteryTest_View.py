@@ -17,6 +17,7 @@ MonitorWindow.
 Examples of how to use can be found at the end of the file under if __name__=='__main__'
 
 """
+import dwf
 import numpy as np
 import pyqtgraph as pg  # used for additional plotting features
 from PyQt5 import uic
@@ -24,7 +25,7 @@ from PyQt5.QtCore import QTimer, QRectF
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QPixmap, QPainter
 
-import yaml
+import ruamel.yaml
 import Battery_Testing_Software.labphew
 import logging
 import os
@@ -244,7 +245,12 @@ class MonitorWindow(MonitorWindowBase):
             self.logger.error("Figure Not Saved")
 
     def save_test(self):
-        self.logger.debug('Saving Test [WIP]')
+        filename, file_type = QFileDialog.getSaveFileName(self, 'Save Test')
+        with open(filename, 'w') as f:
+            # TODO: update all self.test_config parameters here
+            ruamel.yaml.YAML().dump(self.test_config, f)
+            self.logger.debug('Saving Test - Unfinished & UNTESTED')
+            f.close()
 
     def load_test(self):
         """
@@ -255,7 +261,7 @@ class MonitorWindow(MonitorWindowBase):
         """
         filename, file_type = QFileDialog.getOpenFileName(self, 'Load Test')
         with open(filename, 'r') as f:
-            self.test_config = yaml.safe_load(f)
+            self.test_config = ruamel.yaml.safe_load(f)
         self.test_config['config_file'] = filename
         self.update_parameters()
 
@@ -511,9 +517,9 @@ class MonitorWindow(MonitorWindowBase):
             return
         else:
             self.logger.debug('Starting monitor')
-            self.operator._allow_monitor = True  # enable operator monitor loop to run
-            self.monitor_thread.start()  # start the operator monitor
-            self.monitor_timer.start(self.operator.properties['monitor']['gui_refresh_time'])  # start the update timer
+            self.operator._allow_monitor = True  # Enable operator monitor loop to run
+            self.monitor_thread.start()  # Start the operator monitor
+            self.monitor_timer.start(self.operator.properties['monitor']['gui_refresh_time'])  # Start the update timer
             self.plot_points_spinbox.setEnabled(False)
             self.start_button.setEnabled(False)
 
@@ -528,7 +534,7 @@ class MonitorWindow(MonitorWindowBase):
             self.logger.debug('Monitor is not running')
             return
         else:
-            # set flag to to tell the operator to stop:
+            # Set flag to to tell the operator to stop:
             self.logger.debug('Stopping monitor')
             self.operator._stop = True
             self.monitor_thread.stop(self.operator.properties['monitor']['stop_timeout'])
@@ -798,8 +804,11 @@ if __name__ == "__main__":
 
     # To test with simulated device
     # from labphew.controller.digilent.waveforms import SimulatedDfwController as DfwController
-
-    instrument = DfwController()
+    try:
+        instrument = DfwController()
+    except dwf.DWFError as err:
+        logging.info(str(err) + "Could not connect to AD2 Device. Exiting...")
+        exit(-1)
     # instrument.FDwfAnalogIOChannelNodeSet(hdwf, 1, 0, True)
     # instrument.FDwfAnalogIOChannelNodeSet(hdwf, 1, 1, 1.86)
     # instrument.(hdwf, 1, 2, 0.5)  # channel 1 = VP+, node 2 = current limitation
