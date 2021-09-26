@@ -25,13 +25,13 @@ This circuit is a simple electronic load. It works by connecting resistors in pa
 resistances. These resistors are selected by relays, an electromechanical switch.
 
 .. image:: _static/Electronic_Load_Circuit.png
-   :scale: 50 %
+   :scale: 25 %
    :alt: Battery discharging test circuit schematic
 
 With six “bits” the load can be varied between ~500 Ω and ~10 Ω. Every extra “bit” divides the load by 2.
 
 .. list-table:: Control bits resulting resistance
-   :widths: 25 25
+   :widths: 100 50
    :header-rows: 1
 
    * - Bits ON
