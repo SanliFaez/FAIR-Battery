@@ -2,8 +2,8 @@
 Technical Drawings  [WIP]
 ******************
 
-**Battery Charging Circuit**
-
+Battery Charging Circuit
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 This circuit charges a battery using the AD2's programmable power supply (PPS).
 
@@ -19,7 +19,8 @@ resistance, and therefore calculate the current simply:
 
     I_{charge} = I_{shunt} = \frac{V_1-V_2}{R_{shunt}}
 
-**Battery Discharging Circuit**
+Battery Discharging Circuit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This circuit is a simple electronic load. It works by connecting resistors in parallel to achieve lower and lower
 resistances. These resistors are selected by relays, an electromechanical switch.
