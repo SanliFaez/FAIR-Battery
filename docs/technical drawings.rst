@@ -1,5 +1,5 @@
 ******************
-Technical Drawings  [WIP]
+Technical Drawings
 ******************
 
 Battery Charging Circuit
@@ -19,6 +19,13 @@ resistance, and therefore calculate the current simply:
 
     I_{charge} = I_{shunt} = \frac{V_1-V_2}{R_{shunt}}
 
+
+**Program Operation:**
+
+In order to use this test circuit as a constant current source, one must run a loop that adjusts the PPS output
+constantly to the desired current. This current is calculated using the above formula, for which a precise value of
+:math:`R_{shunt}` must be known.
+
 Battery Discharging Circuit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -29,7 +36,7 @@ resistances. These resistors are selected by relays, an electromechanical switch
    :scale: 20 %
    :alt: Battery discharging test circuit schematic
 
-With six “bits” the load can be varied between ~500 Ω and ~10 Ω. Every extra “bit” divides the load by 2.
+With six “bits” the load can be varied between ~500 Ω and ~10 Ω. Every extra “bit” divides the load by roughly 2.
 
 .. list-table:: **Control Bits and Resulting Resistance**
    :widths: 50 50
@@ -52,18 +59,16 @@ With six “bits” the load can be varied between ~500 Ω and ~10 Ω. Every e
    * - 1, 2, 3, 4, 5, and 6
      - 8.9
 
-The above table shows how to control the electronic load.
-
 .. image:: _static/EL_Banana_Jacks.png
    :scale: 40 %
    :alt: Battery discharging banana jacks
 
 This little panel contains 4 banana sockets.
 From left to right:
-White: the connection to the load.
-Black 1: common connection for the load
-Black 2: GND for the 5 Volts supply
-Red: connection for +5 Volts
+    + White: the connection to the load.
+    + Black 1: common connection for the load
+    + Black 2: GND for the 5 Volts supply
+    + Red: connection for +5 Volts
 
 The load connections are totally separated from everything else.
 
@@ -75,3 +80,8 @@ Use the double row header to connect the digital signals from the AD2 to switch 
 Beware, the bottom row is all GND. The top row starts from left to right with bit 1 to 6.
 7 and 8 (the two most right ones) are not connected, but can be used in the future.
 
+**Program Operation:**
+
+In order to use this circuit as a CR sink, simply connect the control bits according to table:
+`**Control Bits and Resulting Resistance**`_. If instead a CC sink is desired, one could measure voltage drop over the load,
+and knowing
