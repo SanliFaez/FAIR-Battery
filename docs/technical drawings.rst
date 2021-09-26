@@ -35,20 +35,20 @@ With six “bits” the load can be varied between ~500 Ω and ~10 Ω. Every e
    :header-rows: 1
 
    * - Bits ON
-     - None
-     - 1
-     - 1 and 2
-     - 1, 2, and 3
-     - 1, 2, 3, and 4
-     - 1, 2, 3, 4, and 5
-     - 1, 2, 3, 4, 5, and 6
    * - Load Value (Ω)
+     - None
      - 510
+     - 1
      - 225
+     - 1 and 2
      - 131
+     - 1, 2, and 3
      - 65.9
+     - 1, 2, 3, and 4
      - 32.9
+     - 1, 2, 3, 4, and 5
      - 16.9
+     - 1, 2, 3, 4, 5, and 6
      - 8.9
 
 .. image:: _static/EL_Banana_Jacks.png
