@@ -31,24 +31,24 @@ resistances. These resistors are selected by relays, an electromechanical switch
 With six “bits” the load can be varied between ~500 Ω and ~10 Ω. Every extra “bit” divides the load by 2.
 
 .. list-table:: Control bits resulting resistance
-   :widths: 100 50
+   :widths: 50 50 50
    :header-rows: 1
 
    * - Bits ON
      - Load Value (Ω)
    * - None
      - 510
-     - 1
+   * - 1
      - 225
-     - 1 and 2
+   * - 1 and 2
      - 131
-     - 1, 2, and 3
+   * - 1, 2, and 3
      - 65.9
-     - 1, 2, 3, and 4
+   * - 1, 2, 3, and 4
      - 32.9
-     - 1, 2, 3, 4, and 5
+   * - 1, 2, 3, 4, and 5
      - 16.9
-     - 1, 2, 3, 4, 5, and 6
+   * - 1, 2, 3, 4, 5, and 6
      - 8.9
 
 The above table shows how to control the electronic load.
