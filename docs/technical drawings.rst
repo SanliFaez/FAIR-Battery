@@ -25,13 +25,13 @@ This circuit is a simple electronic load. It works by connecting resistors in pa
 resistances. These resistors are selected by relays, an electromechanical switch.
 
 .. image:: _static/Electronic_Load_Circuit.png
-   :scale: 25 %
+   :scale: 20 %
    :alt: Battery discharging test circuit schematic
 
 With six “bits” the load can be varied between ~500 Ω and ~10 Ω. Every extra “bit” divides the load by 2.
 
 .. list-table:: Control bits resulting resistance
-   :widths: 50 50 50
+   :widths: 50 50
    :header-rows: 1
 
    * - Bits ON
@@ -54,7 +54,7 @@ With six “bits” the load can be varied between ~500 Ω and ~10 Ω. Every e
 The above table shows how to control the electronic load.
 
 .. image:: _static/EL_Banana_Jacks.png
-   :scale: 50 %
+   :scale: 40 %
    :alt: Battery discharging banana jacks
 
 This little panel contains 4 banana sockets.
@@ -67,7 +67,7 @@ Red: connection for +5 Volts
 The load connections are totally separated from everything else.
 
 .. image:: _static/EL_Control_Bits.png
-   :scale: 50 %
+   :scale: 40 %
    :alt: Battery discharging control bits
 
 Use the double row header to connect the digital signals from the AD2 to switch the load.
