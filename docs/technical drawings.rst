@@ -19,12 +19,17 @@ resistance, and therefore calculate the current simply:
 
     I_{charge} = I_{shunt} = \frac{V_1-V_2}{R_{shunt}}
 
-
-**Program Operation:**
+**Programmatic Operation:**
 
 In order to use this test circuit as a constant current source, one must run a loop that adjusts the PPS output
 constantly to the desired current. This current is calculated using the above formula, for which a precise value of
 :math:`R_{shunt}` must be known.
+
+**Limitations**
+
+    + When not running, the battery discharges into the AD2
+    + Max current supply limited by :math:`R_{shunt}` value and AD2's max PPS voltage of 5V
+    + Current measurement accuracy limited by :math:`R_{shunt}` value and AD2's voltage measurement accuracy
 
 Battery Discharging Circuit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -82,8 +87,13 @@ Use the double row header to connect the digital signals from the AD2 to switch 
 Beware, the bottom row is all GND. The top row starts from left to right with bit 1 to 6.
 7 and 8 (the two most right ones) are not connected, but can be used in the future.
 
-**Program Operation:**
+**Programmatic Operation:**
 
 In order to use this circuit as a CR sink, simply connect the control bits according to table:
 table-1_. If instead a CC sink is desired, one could measure voltage drop over the load,
-and knowing
+and knowing the current set resistance, calculate the discharge current from the battery.
+
+**Limitations**
+
+    + Limited number of discrete steps greatly limits smooth CC functionality.
+    + Max power dissipation limited by 1/4 W resistors -> Parallelled allows more, but not equally
