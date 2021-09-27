@@ -19,7 +19,7 @@ resistance, and therefore calculate the current simply:
 
     I_{charge} = I_{shunt} = \frac{V_1-V_2}{R_{shunt}}
 
-**Programmatic Operation:**
+**Programmatic Operation**
 
 In order to use this test circuit as a constant current source, one must run a loop that adjusts the PPS output
 constantly to the desired current. This current is calculated using the above formula, for which a precise value of
@@ -87,7 +87,7 @@ Use the double row header to connect the digital signals from the AD2 to switch 
 Beware, the bottom row is all GND. The top row starts from left to right with bit 1 to 6.
 7 and 8 (the two most right ones) are not connected, but can be used in the future.
 
-**Programmatic Operation:**
+**Programmatic Operation**
 
 In order to use this circuit as a CR sink, simply connect the control bits according to table:
 table-1_. If instead a CC sink is desired, one could measure voltage drop over the load,
