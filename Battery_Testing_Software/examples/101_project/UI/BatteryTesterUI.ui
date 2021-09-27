@@ -895,7 +895,7 @@
    <sender>max_time_spinbox</sender>
    <signal>valueChanged(double)</signal>
    <receiver>MainWindow</receiver>
-   <slot>max_test_time()</slot>
+   <slot>set_max_test_time()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>295</x>
@@ -911,7 +911,7 @@
    <sender>max_cell_voltage_spinbox</sender>
    <signal>valueChanged(double)</signal>
    <receiver>MainWindow</receiver>
-   <slot>max_test_voltage()</slot>
+   <slot>set_max_test_voltage()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>274</x>
@@ -927,7 +927,7 @@
    <sender>min_cell_voltage_spinbox</sender>
    <signal>valueChanged(double)</signal>
    <receiver>MainWindow</receiver>
-   <slot>min_test_voltage()</slot>
+   <slot>set_min_test_voltage()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>256</x>
@@ -943,7 +943,7 @@
    <sender>max_current_spinbox</sender>
    <signal>valueChanged(double)</signal>
    <receiver>MainWindow</receiver>
-   <slot>max_test_current()</slot>
+   <slot>set_max_test_current()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>249</x>
@@ -959,7 +959,7 @@
    <sender>flow_rate_spinbox</sender>
    <signal>valueChanged(double)</signal>
    <receiver>MainWindow</receiver>
-   <slot>flow_rate()</slot>
+   <slot>set_flow_rate()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>290</x>
@@ -975,7 +975,7 @@
    <sender>test_mode_tabs</sender>
    <signal>currentChanged(int)</signal>
    <receiver>MainWindow</receiver>
-   <slot>test_mode()</slot>
+   <slot>set_test_mode()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>360</x>
@@ -991,7 +991,7 @@
    <sender>target_selection_tabs</sender>
    <signal>currentChanged(int)</signal>
    <receiver>MainWindow</receiver>
-   <slot>test_selection()</slot>
+   <slot>set_test_selection()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>323</x>
@@ -1007,7 +1007,7 @@
    <sender>charge_radiobutton</sender>
    <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
-   <slot>charge_mode()</slot>
+   <slot>set_charge_mode()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>165</x>
@@ -1023,7 +1023,7 @@
    <sender>target_voltage_spinbox</sender>
    <signal>valueChanged(double)</signal>
    <receiver>MainWindow</receiver>
-   <slot>target_voltage()</slot>
+   <slot>set_target_voltage()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>283</x>
@@ -1039,7 +1039,7 @@
    <sender>target_current_spinbox</sender>
    <signal>valueChanged(double)</signal>
    <receiver>MainWindow</receiver>
-   <slot>target_current()</slot>
+   <slot>set_target_current()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>310</x>
@@ -1055,7 +1055,7 @@
    <sender>target_resistance_spinbox</sender>
    <signal>valueChanged(double)</signal>
    <receiver>MainWindow</receiver>
-   <slot>target_resistance()</slot>
+   <slot>set_target_resistance()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>340</x>
@@ -1071,7 +1071,7 @@
    <sender>min_frequency_spinbox</sender>
    <signal>valueChanged(int)</signal>
    <receiver>MainWindow</receiver>
-   <slot>min_frequency()</slot>
+   <slot>set_min_frequency()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>316</x>
@@ -1087,7 +1087,7 @@
    <sender>max_frequency_spinbox</sender>
    <signal>valueChanged(int)</signal>
    <receiver>MainWindow</receiver>
-   <slot>min_frequency()</slot>
+   <slot>set_min_frequency()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>316</x>
@@ -1103,7 +1103,7 @@
    <sender>steps_per_decade_spinbox</sender>
    <signal>valueChanged(int)</signal>
    <receiver>MainWindow</receiver>
-   <slot>steps_per_decade()</slot>
+   <slot>set_steps_per_decade()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>300</x>
@@ -1165,26 +1165,26 @@
   </connection>
  </connections>
  <slots>
-  <slot>max_test_time()</slot>
-  <slot>max_test_voltage()</slot>
-  <slot>min_test_voltage()</slot>
-  <slot>target_voltage()</slot>
-  <slot>target_current()</slot>
+  <slot>set_max_test_time()</slot>
+  <slot>set_max_test_voltage()</slot>
+  <slot>set_min_test_voltage()</slot>
+  <slot>set_target_voltage()</slot>
+  <slot>set_target_current()</slot>
   <slot>start_test_button()</slot>
   <slot>stop_test_button()</slot>
   <slot>reset_test_button()</slot>
   <slot>export_raw_data()</slot>
   <slot>save_test()</slot>
   <slot>load_test()</slot>
-  <slot>max_test_current()</slot>
-  <slot>flow_rate()</slot>
-  <slot>test_mode()</slot>
-  <slot>test_selection()</slot>
-  <slot>charge_mode()</slot>
-  <slot>target_resistance()</slot>
-  <slot>min_frequency()</slot>
-  <slot>max_frequency()</slot>
-  <slot>steps_per_decade()</slot>
+  <slot>set_max_test_current()</slot>
+  <slot>set_flow_rate()</slot>
+  <slot>set_test_mode()</slot>
+  <slot>set_test_selection()</slot>
+  <slot>set_charge_mode()</slot>
+  <slot>set_target_resistance()</slot>
+  <slot>set_min_frequency()</slot>
+  <slot>set_max_frequency()</slot>
+  <slot>set_steps_per_decade()</slot>
   <slot>export_figure()</slot>
  </slots>
 </ui>
