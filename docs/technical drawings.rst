@@ -43,7 +43,7 @@ resistances. These resistors are selected by relays, an electromechanical switch
 
 With six “bits” the load can be varied between ~500 Ω and ~10 Ω. Every extra “bit” divides the load by roughly 2.
 
-.. _table-1:
+.. _Control Bits and Resulting Resistance:
 
 .. list-table:: **Control Bits and Resulting Resistance**
    :widths: 50 50
@@ -90,7 +90,7 @@ Beware, the bottom row is all GND. The top row starts from left to right with bi
 **Programmatic Operation**
 
 In order to use this circuit as a CR sink, simply connect the control bits according to table:
-table-1_. If instead a CC sink is desired, one could measure voltage drop over the load,
+`Control Bits and Resulting Resistance`_. If instead a CC sink is desired, one could measure voltage drop over the load,
 and knowing the current set resistance, calculate the discharge current from the battery.
 
 **Limitations**
