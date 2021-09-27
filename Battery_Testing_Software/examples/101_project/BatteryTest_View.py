@@ -78,6 +78,8 @@ class MonitorWindow(MonitorWindowBase):
 
         self.shunt_resistance = 0.24
 
+        self.max_test_time = 0
+
     def set_graph(self):
         """Initialize setting for graphs"""
         self.graphicsView.setBackground('k')
@@ -94,36 +96,37 @@ class MonitorWindow(MonitorWindowBase):
         pass
 
     # Define Abstract Methods from Parent
-    def max_test_time(self, max_time):
-        self.max_test_time = max_time
+    def set_max_test_time(self, max_time):
+        """Get time in minutes as float"""
+        self.max_test_time = float(max_time)
         self.logger.debug('Test Time: ' + str(int(self.max_test_time * 60)) + " s")
 
-    def max_test_voltage(self, max_voltage):
+    def set_max_test_voltage(self, max_voltage):
         self.max_test_voltage = max_voltage
         self.logger.debug("Max Test Voltage: " + str(round(max_voltage, 3)) + " V")
 
-    def min_test_voltage(self, min_voltage):
+    def set_min_test_voltage(self, min_voltage):
         self.min_test_voltage = min_voltage
         self.logger.debug("Min Test Voltage: " + str(round(min_voltage, 3)) + " V")
 
-    def target_voltage(self, voltage):
+    def set_target_voltage(self, voltage):
         self.target_voltage = voltage
         self.logger.debug("Target: " + str(round(voltage, 3)) + " V")
 
-    def target_current(self, current):
+    def set_target_current(self, current):
         self.target_current = current
         self.logger.debug("Target: " + str(round(current, 3)) + " mA")
 
-    def target_resistance(self, resistance):
+    def set_target_resistance(self, resistance):
         self.logger.debug("Target: " + str(round(resistance, 3)) + " Ohms")
 
-    def min_frequency(self, frequency):
+    def set_min_frequency(self, frequency):
         self.logger.debug("Min. Frequency: " + str(frequency) + " Hz")
 
-    def max_frequency(self, frequency):
+    def set_max_frequency(self, frequency):
         self.logger.debug("Max. Frequency: " + str(frequency) + " Hz")
 
-    def steps_per_decade(self, steps):
+    def set_steps_per_decade(self, steps):
         self.logger.debug("Steps per Decade:" + str(steps))
 
     def start_test_button(self):
@@ -135,21 +138,24 @@ class MonitorWindow(MonitorWindowBase):
             self.logger.debug("Operator is busy")
             return
         else:
-            self.buffer_time = np.array([])
-            self.buffer_voltage = np.array([])
-            self.buffer_current = np.array([])
-            self.logger.debug('Starting monitor')
-            self.operator._allow_monitor = True  # enable operator monitor loop to run
-            self.monitor_thread.start()  # start the operator monitor
-            self.monitor_timer.start(
-                int(self.operator.properties['monitor']['gui_refresh_time'] * 1000))  # start the update timer
-            # Disable UI Elements
-            self.target_voltage_spinbox.setEnabled(False)
-            self.target_current_spinbox.setEnabled(False)
-            self.start_button.setEnabled(False)
-            self.reset_button.setEnabled(False)
-            self.end_time = time() + (self.max_test_time * 60)
-            self.out_voltage = self.operator.instrument.read_analog()[0]  # Start test at measured cell voltage
+            if self.max_test_time > 0:
+                self.buffer_time = np.array([])
+                self.buffer_voltage = np.array([])
+                self.buffer_current = np.array([])
+                self.logger.debug('Starting monitor')
+                self.operator._allow_monitor = True  # enable operator monitor loop to run
+                self.monitor_thread.start()  # start the operator monitor
+                self.monitor_timer.start(
+                    int(self.operator.properties['monitor']['gui_refresh_time'] * 1000))  # start the update timer
+                # Disable UI Elements
+                self.target_voltage_spinbox.setEnabled(False)
+                self.target_current_spinbox.setEnabled(False)
+                self.start_button.setEnabled(False)
+                self.reset_button.setEnabled(False)
+                self.end_time = time() + (float(self.max_test_time) * 60)
+                self.out_voltage = self.operator.instrument.read_analog()[0]  # Start test at measured cell voltage
+            else:
+                self.logger.warning("Set Max. Test Time > 0 to run a test")
 
     def stop_test_button(self):
         """
@@ -180,21 +186,21 @@ class MonitorWindow(MonitorWindowBase):
         self.operator.pps_out(0, 4)
         pass
 
-    def test_selection(self, selection):
+    def set_test_selection(self, selection):
         self.test_selection = selection
         self.logger.debug('CV (0) / CC (1) / CR (2): ' + str(selection))
 
-    def test_mode(self, mode):
+    def set_test_mode(self, mode):
         self.test_mode = mode
         self.logger.debug('Charge/Discharge (0) / Impedance (1): ' + str(mode))
 
-    def charge_mode(self, charge_mode):
+    def set_charge_mode(self, charge_mode):
         self.logger.debug('Charge (T) / Discharge (F): ' + str(charge_mode))
 
-    def flow_rate(self, flow_rate):
+    def set_flow_rate(self, flow_rate):
         self.logger.debug('Flow Rate: ' + str(flow_rate))
 
-    def max_test_current(self, current):
+    def set_max_test_current(self, current):
         self.logger.debug('Max Test Current: ' + str(current))
 
     def confirmation_box(self, message):  # TODO: Not an abstract method
