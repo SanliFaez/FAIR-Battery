@@ -13,9 +13,8 @@ Base class for View Windows.
 Example usage can be found at the bottom of the file under if __name__=='__main___'
 """
 
-import labphew
-from labphew.core.base.tools import check_method_presence_and_warn
-from labphew.core.tools.gui_tools import fit_on_screen, ModifyConfig
+from Battery_Testing_Software.labphew.core.base.tools import check_method_presence_and_warn
+from Battery_Testing_Software.labphew.core.tools.gui_tools import fit_on_screen, ModifyConfig
 import logging
 import os.path
 import yaml

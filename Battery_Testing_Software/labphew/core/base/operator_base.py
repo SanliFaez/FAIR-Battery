@@ -13,8 +13,7 @@ Base class for operators.
 Example usage can be found at the bottom of the file under if __name__=='__main___'
 """
 
-import labphew
-from labphew.core.base.tools import check_method_presence_and_warn
+from Battery_Testing_Software.labphew.core.base.tools import check_method_presence_and_warn
 import logging
 import os.path
 import yaml

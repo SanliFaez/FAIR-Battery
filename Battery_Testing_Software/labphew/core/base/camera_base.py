@@ -27,7 +27,7 @@
 """
 import numpy as np
 
-from labphew import Q_
+from Battery_Testing_Software.labphew import Q_
 #from experimentor.lib.log import get_logger
 
 #logger = get_logger(__name__)
