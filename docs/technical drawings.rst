@@ -96,4 +96,5 @@ and knowing the current set resistance, calculate the discharge current from the
 **Limitations**
 
     + Limited number of discrete steps greatly limits smooth CC functionality.
-    + Max power dissipation limited by 1/4 W resistors -> Parallelled allows more, but not equally
+    + Max power dissipation limited by 1/4 W resistors -> Parallelled allows more, but resistances are not the same, so
+      current is not dissipated equally
