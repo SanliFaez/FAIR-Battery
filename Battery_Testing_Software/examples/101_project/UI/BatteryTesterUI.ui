@@ -1042,8 +1042,8 @@
    <slot>set_target_current()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>310</x>
-     <y>188</y>
+     <x>128</x>
+     <y>168</y>
     </hint>
     <hint type="destinationlabel">
      <x>400</x>
@@ -1058,8 +1058,8 @@
    <slot>set_target_resistance()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>340</x>
-     <y>188</y>
+     <x>131</x>
+     <y>168</y>
     </hint>
     <hint type="destinationlabel">
      <x>385</x>
