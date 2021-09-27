@@ -6,7 +6,8 @@ Welcome to FAIR-Battery docs
    :scale: 50 %
    :alt: FAIR-Battery Logo
 
-*FAIR-Battery* is [short sentence about vision and goals]
+In the *FAIR-Battery* FAIR-Battery project, we aim to create an open-source electrochemical battery
+(FAIR = Findable + Accessible + Interoperable + Reproducible).
 
 FAIR-Battery is meant to be:
 -----------------------
@@ -14,9 +15,6 @@ FAIR-Battery is meant to be:
 + Scalable: both small and medium scale installations are supported and considered in new designs
 + Versatile: alternative chemistries or material resources will be accommodated as much as possible
 
-FAIR-Battery is NOT meant to:
-------------------------
-+
 
 You can find the code of this package on `Github <https://github.com/sanlifaez/FAIR-Battery>`_.
 The documentation is hosted on `Read The Docs <https://readthedocs.org/projects/FAIR-Battery>`_.
