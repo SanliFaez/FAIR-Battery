@@ -77,6 +77,7 @@ class DfwController(dwf.Dwf):
 
         self.logger.debug('DfwController object created')
 
+    # AnalogIn
     def preset_basic_analog(self, n=80, freq=10000, range=50.0, return_std=False):
         """
         Apply settings for read_analog() and write_analog()
@@ -136,41 +137,6 @@ class DfwController(dwf.Dwf):
             self._time_stabilized = max(self._time_stabilized, time.time() + 0.013 + 0.005 * abs(self._last_ao1 - volt))
             self._last_ao1 = volt
 
-    # Nic Added #
-    def write_pps(self, volt, channel, enable=True, enable_master=True):
-        """
-        Basic method to apply voltage to programmable power supply channels.
-        In the background it also approximates the timestamp when the output will be stabilize (based on the change in voltage applied).
-        To wait for that timestamp, call wait_for_stabilization()
-
-        :param volt: voltage to apply (in Volts)
-        :type vol: float
-        :param channel: pps out channel to set (0 is V+ and 1 is V-)
-        :type channel: int
-        :param enable: whether or not to enable the output (default is True)
-        :type enable: bool
-        :param enable_master: choose to run enableMaster (default is True)
-        :type enable_master: bool
-        """
-        if enable_master is True:
-            self.enable_pps(True)
-
-        if channel == 0:
-            self._last_pps0 = volt
-        if channel == 1:
-            self._last_pps1 = volt
-        if (channel == 0 and volt >= 0 and channel == 0 and volt <= 5) or (
-                channel == 1 and volt <= 0 and channel == 1 and volt >= -5):
-            self.pps.channelNodeSet(channel, 1, volt)
-            self.pps.channelNodeSet(channel, 0, enable)
-            self._time_stabilized = max(self._time_stabilized, time.time() + 0.013 + 0.005 * abs(self._last_ao0 - volt))
-        else:
-            self.logger.error('Voltage not in range of device')
-
-    def enable_pps(self, enable=True):
-        """ Run to set master enable setting for programmable power supply """
-        self.pps.enableSet(enable)
-
     def wait_for_stabilization(self):
         """
         Waits for the output to stabilize. Note that this is calculated and approximated, not actively measured or verified.
@@ -223,6 +189,62 @@ class DfwController(dwf.Dwf):
             if time.time() > start_timestamp + read_timeout:
                 self.logger.error('AI read timeout occured')
                 return True
+
+    # AnalogOut
+    def write_pps(self, volt, channel, enable=True, enable_master=True):
+        """
+        Basic method to apply voltage to programmable power supply channels.
+        In the background it also approximates the timestamp when the output will be stabilize (based on the change in voltage applied).
+        To wait for that timestamp, call wait_for_stabilization()
+
+        :param volt: voltage to apply (in Volts)
+        :type vol: float
+        :param channel: pps out channel to set (0 is V+ and 1 is V-)
+        :type channel: int
+        :param enable: whether or not to enable the output (default is True)
+        :type enable: bool
+        :param enable_master: choose to run enableMaster (default is True)
+        :type enable_master: bool
+        """
+        if enable_master is True:
+            self.enable_pps(True)
+
+        if channel == 0:
+            self._last_pps0 = volt
+        if channel == 1:
+            self._last_pps1 = volt
+        if (channel == 0 and volt >= 0 and channel == 0 and volt <= 5) or (
+                channel == 1 and volt <= 0 and channel == 1 and volt >= -5):
+            self.pps.channelNodeSet(channel, 1, volt)
+            self.pps.channelNodeSet(channel, 0, enable)
+            self._time_stabilized = max(self._time_stabilized,
+                                        time.time() + 0.013 + 0.005 * abs(self._last_ao0 - volt))
+        else:
+            self.logger.error('Voltage not in range of device')
+
+    def enable_pps(self, enable=True):
+        """ Run to set master enable setting for programmable power supply """
+        self.pps.enableSet(enable)
+
+    # DigitalOut
+    def write_digital(self, level, pin=-1, enable=1, idle_set=0, output_set=0):
+        """
+        Basic method to write digital outputs.
+
+        :param level: level to write pin 0/1
+        :type level: int
+        :param pin: analog out channel to set (default is -1, meaning all channels)
+        :type pin: int
+        :param enable: 0/1 whether to enable pin
+        :param idle_set: 0/1 set pin idle mode (default 0(LOW))
+        :param output_set: set output type (PP/OD/OS/OT) (0/1/2/3) default is Push Pull (PP = 0)
+        """
+        self.do.autoConfigureSet(True)
+        self.do.enableSet(pin, enable)  # Enable device
+        self.do.idleSet(pin, idle_set)  # Set default level
+        self.do.typeSet(pin, 1)  # Set output type to custom
+        self.do.outputSet(pin, output_set)  # Set output type to push-pull
+        self.do.dataSet(pin, (level,))
 
 
 class SimulatedDfwController:
@@ -472,7 +494,7 @@ if __name__ == '__main__':
     # Apply settings for using basic analog methods.
     # Note that this is already automatically done at instantiation of the object so technically not required at this moment.
     # But if you've those changed settings (like we'll do in the advanced example below) it is necessary.
-    daq.preset_basic_analog()
+    daq = DfwController(0, 0)
 
     t0 = time.time()
     for k in range(10):

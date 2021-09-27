@@ -124,6 +124,20 @@ class Operator(OperatorBase):
     def enable_pps(self, enable=True):
         self.instrument.enable_pps(enable)
 
+    def write_digital(self, level, pin=-1, enable=1, idle_set=0, output_set=0):
+        """
+        Basic method to write digital outputs.
+
+        :param level: level to write pin 0/1
+        :type level: int
+        :param pin: analog out channel to set (default is -1, meaning all channels)
+        :type pin: int
+        :param enable: 0/1 whether to enable pin
+        :param idle_set: 0/1 set pin idle mode (default 0(LOW))
+        :param output_set: set output type (PP/OD/OS/OT) (0/1/2/3) default is Push Pull (PP = 0)
+        """
+        self.instrument.write_digital(level, pin, enable, idle_set, output_set)
+
     def _set_monitor_time_step(self, time_step):
         """
         Set Monitor time step.
@@ -206,7 +220,7 @@ class Operator(OperatorBase):
 
     def _set_scan_step(self, step=None):
         """
-        Set scan step value. Note that it will correct the sign automatically accroding to start and stop values.
+        Set scan step value. Note that it will correct the sign automatically according to start and stop values.
         If no step value is supplied it only corrects the sign of step.
 
         :param step: the stepsize for the scan (V)
