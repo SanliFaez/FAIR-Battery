@@ -66,6 +66,7 @@ class MonitorWindow(MonitorWindowBase):
 
         self.target_voltage = 0
         self.target_current = 0
+        self.target_resistance = 510
         self.out_voltage = self.target_voltage
 
         self.shunt_resistance = 0.24
@@ -112,6 +113,7 @@ class MonitorWindow(MonitorWindowBase):
         self.logger.debug("Target: " + str(round(current, 3)) + " mA")
 
     def set_target_resistance(self, resistance):
+        self.target_resistance = resistance
         self.logger.debug("Target: " + str(round(resistance, 3)) + " Ohms")
 
     def set_min_frequency(self, frequency):
@@ -290,27 +292,47 @@ class MonitorWindow(MonitorWindowBase):
         self.operator._set_monitor_plot_points(self.test_config['test']['plot_points'])
         self.logger.debug('Parameters Updated')
 
-    def run_cv_charge_test(self):
+    def run_cv_charge_test(self, voltage, increment=0.01, margin=0):
+        """
+        Feedback based; must be repeated throughout test.
+
+        :param voltage: desired voltage
+        :param increment: fixed amount to increment voltage per control loop to get desired current
+        :param margin: margin in V about where the loop will not react; the "allowed inaccuracy" that prevents the loop
+                       from over-controlling
+        """
         self.operator.enable_pps(True)
-        increment = 0.01
-        if self.operator.analog_monitor_1[-1] < self.target_voltage:
+        if self.operator.analog_monitor_1[-1] < voltage - margin:
             self.out_voltage += increment
-        elif self.operator.analog_monitor_1[-1] > self.target_voltage:
+        elif self.operator.analog_monitor_1[-1] > voltage + margin:
             self.out_voltage -= increment
         self.operator.pps_out(0, self.out_voltage)
         #print(self.out_voltage)
 
-    def run_cc_charge_test(self):
+    def run_cc_charge_test(self, current, increment=0.1, margin=5):
+        """
+        Feedback based; must be repeated throughout test.
+
+        :param current: desired charge current
+        :param increment: fixed amount to increment voltage per control loop to get desired current
+        :param margin: current margin in mA about where the loop will not react; the "allowed inaccuracy" that prevents
+                       the loop from over-controlling
+        """
         self.operator.enable_pps(True)
-        increment = 0.01
-        if self.buffer_current[-1] < self.target_current - 5:
+        if self.buffer_current[-1] < current - margin:
             self.out_voltage += increment
-        elif self.buffer_current[-1] > self.target_current + 5:
+        elif self.buffer_current[-1] > current + margin:
             self.out_voltage -= increment
         self.operator.pps_out(0, self.out_voltage)
-        #print(self.buffer_current[-1], self.target_current, self.out_voltage)
+        #print(self.buffer_current[-1], current, self.out_voltage)
 
-    def run_cr_discharge_test(self, resistance):
+    def run_cr_discharge_test(self, resistance: float):
+        """
+        Only supports resistances mapped to control pins in the below dictionary.
+        Only should be run once on start of test.
+
+        :param resistance: desired load resistance
+        """
         resistances = {512: [],
                        225: [8],
                        131: [8, 9],
@@ -343,24 +365,6 @@ class MonitorWindow(MonitorWindowBase):
 
         self.plot1.setTitle(self.operator.properties['monitor'][1]['name'])
         self.plot2.setTitle(self.operator.properties['monitor'][2]['name'])
-
-    def ao1_value(self):
-        """
-        Called when AO Channel 2 spinbox is modified.
-        Updates the parameter using a method of operator (which checks validity) and forces the (corrected) parameter in the gui element
-        """
-        value = self.operator.analog_out(1, self.ao1_spinbox.value())
-        self.ao1_spinbox.setValue(value)
-        set_spinbox_stepsize(self.ao1_spinbox)
-
-    def ao2_value(self):
-        """
-        Called when AO Channel 2 spinbox is modified.
-        Updates the parameter using a method of operator (which checks validity) and forces the (corrected) parameter in the gui element
-        """
-        value = self.operator.analog_out(2, self.ao2_spinbox.value())
-        self.ao2_spinbox.setValue(value)
-        set_spinbox_stepsize(self.ao2_spinbox)
 
     def time_step(self):
         """
@@ -395,6 +399,9 @@ class MonitorWindow(MonitorWindowBase):
             self.monitor_timer.start(self.operator.properties['monitor']['gui_refresh_time'])  # Start the update timer
             self.plot_points_spinbox.setEnabled(False)
             self.start_button.setEnabled(False)
+            if self.test_mode == 1:  # If Charge(0)/Discharge(1) mode is selected
+                if self.test_selection == 1:    # If CV(0)/CC(1)/CR(2) test is selected
+                    self.run_cc_discharge_test()
 
     def stop_monitor(self):
         """
@@ -446,11 +453,14 @@ class MonitorWindow(MonitorWindowBase):
         if time() >= self.end_time:
             self.stop_test_button()
 
-        if self.test_mode == 0:  # If Charge/Discharge mode is selected
+        if self.test_mode == 0:  # If Charge(0)/Discharge(1) mode is selected
             if self.test_selection == 0:  # TODO: implement discharge function
-                self.run_cv_charge_test()
+                self.run_cv_charge_test(self.target_voltage)
             elif self.test_selection == 1:
-                self.run_cc_charge_test()
+                self.run_cc_charge_test(self.target_current)
+        elif self.test_mode == 1:
+            if self.test_selection == 2:    # If CV(0)/CC(1)/CR(2) test is selected
+                self.run_cr_discharge_test(self.target_resistance)
 
         if self.test_mode == 1:
             self.run_impedance_test()
@@ -467,12 +477,12 @@ class MonitorWindow(MonitorWindowBase):
     def closeEvent(self, event):
         """ Gets called when the window is closed. Could be used to do some cleanup before closing. """
 
-        # # Use this bit to display an "Are you sure"-dialogbox
-        # quit_msg = "Are you sure you want to exit labphew monitor?"
-        # reply = QMessageBox.question(self, 'Message', quit_msg, QMessageBox.Yes, QMessageBox.No)
-        # if reply == QMessageBox.No:
-        #     event.ignore()
-        #     return
+        # Use this bit to display an "Are you sure" dialog popup
+        quit_msg = "Are you sure you want to exit Battery Tester?"
+        reply = QMessageBox.question(self, 'Message', quit_msg, QMessageBox.Yes, QMessageBox.No)
+        if reply == QMessageBox.No:
+            event.ignore()
+            return
         self.stop_monitor()  # stop monitor if it was running
         self.monitor_timer.stop()  # stop monitor timer, just to be nice
         # Close all child scan windows
@@ -500,9 +510,6 @@ if __name__ == "__main__":
     except dwf.DWFError as err:
         logging.info(str(err) + "Could not connect to AD2 Device. Exiting...")
         exit(-1)
-    # instrument.FDwfAnalogIOChannelNodeSet(hdwf, 1, 0, True)
-    # instrument.FDwfAnalogIOChannelNodeSet(hdwf, 1, 1, 1.86)
-    # instrument.(hdwf, 1, 2, 0.5)  # channel 1 = VP+, node 2 = current limitation
     opr = Operator(instrument)  # Create operator instance
     opr.load_config()
 
