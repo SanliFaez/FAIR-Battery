@@ -25,11 +25,11 @@ from time import time
 from Battery_Testing_Software.labphew.core.tools.gui_tools import set_spinbox_stepsize, ValueLabelItem
 from Battery_Testing_Software.labphew.core.base.general_worker import WorkThread
 from Battery_Testing_Software.labphew.core.base.view_base import MonitorWindowBase
-
+from Battery_Testing_Software.labphew.model.analog_discovery_2_model import Operator
 
 class MonitorWindow(MonitorWindowBase):
 
-    def __init__(self, operator, parent=None):
+    def __init__(self, operator: Operator, parent=None):
         """
         Creates the monitor window.
         :param operator: The operator
@@ -60,8 +60,10 @@ class MonitorWindow(MonitorWindowBase):
         self.monitor_timer.timeout.connect(self.update_monitor)
         self.monitor_thread = WorkThread(self.operator._monitor_loop)
 
-        self.test_selection = 0  # Defaults to Charge/Discharge mode
-        self.test_mode = 0  # Defaults to CV mode
+        # set default tab modes # TODO: either read current tabs or update tabs to these values on startup
+        self.test_selection = 0  # Type of test to run: CV (0) / CC (1) / CR (2)
+        self.charge_mode = 0    # Whether to Charge or Discharge: Charge (T) / Discharge (F)
+        self.test_type = 0  # Charge (0) / Discharge (1) / Impedance (2)
         self.end_time = 0
 
         self.target_voltage = 0
@@ -158,6 +160,9 @@ class MonitorWindow(MonitorWindowBase):
                 self.reset_button.setEnabled(False)
                 self.end_time = time() + (float(self.max_test_time) * 60)
                 self.out_voltage = self.operator.instrument.read_analog()[0]  # Start test at measured cell voltage
+                if self.test_type == 1:  # If Charge (0) / Discharge (1) / Impedance (2) mode is selected
+                    if self.test_selection == 2:  # If CV (0) / CC (1) / CR (2) test is selected
+                        self.run_cr_discharge_test(self.target_resistance)
             else:
                 self.logger.warning("Set Max. Test Time > 0 to run a test")
 
@@ -168,7 +173,9 @@ class MonitorWindow(MonitorWindowBase):
         - flags the operator to stop
         - uses the Workthread stop method to wait a bit for the operator to finish, or terminate thread if timeout occurs
         """
+        # TODO: add method to clean current test instead of this below line
         self.operator.pps_out(0, 0.6)
+
         if not self.monitor_thread.isRunning():
             self.logger.debug('Monitor is not running')
             return
@@ -179,7 +186,6 @@ class MonitorWindow(MonitorWindowBase):
             self.monitor_thread.stop(self.operator.properties['monitor']['stop_timeout'])
             self.operator._allow_monitor = False  # disable monitor again
             self.operator._busy = False  # Reset in case the monitor was not stopped gracefully, but forcefully stopped
-        self.operator.pps_out(0, 0.6)
 
     def reset_test_button(self):
         self.logger.debug('Resetting monitor')
@@ -194,12 +200,19 @@ class MonitorWindow(MonitorWindowBase):
         self.test_selection = selection
         self.logger.debug('CV (0) / CC (1) / CR (2): ' + str(selection))
 
-    def set_test_mode(self, mode):
-        self.test_mode = mode
-        self.logger.debug('Charge/Discharge (0) / Impedance (1): ' + str(mode))
+    def set_test_mode(self, impedance_mode):
+        if impedance_mode:
+            self.test_type = 2
+        elif not impedance_mode:
+            self.test_type = int(not self.charge_radiobutton.isChecked())
+        self.logger.debug('Charge (0) / Discharge (1) / Impedance (2): ' + str(self.test_type))
 
-    def set_charge_mode(self, charge_mode):
-        self.logger.debug('Charge (T) / Discharge (F): ' + str(charge_mode))
+    def set_charge_mode(self, charge_mode: bool):
+        if charge_mode:
+            self.test_type = 0
+        elif not charge_mode:
+            self.test_type = 1
+        self.logger.debug('Charge (0) / Discharge (1) / Impedance (2): ' + str(self.test_type))
 
     def confirmation_box(self, message):  # TODO: Not an abstract method
         """
@@ -333,17 +346,19 @@ class MonitorWindow(MonitorWindowBase):
 
         :param resistance: desired load resistance
         """
-        resistances = {512: [],
-                       225: [8],
-                       131: [8, 9],
+        resistances = {512.0: [],
+                       225.0: [8],
+                       131.0: [8, 9],
                        65.9: [8, 9, 10],
                        32.9: [8, 9, 10, 11],
                        16.9: [8, 9, 10, 11, 12],
                        8.9: [8, 9, 10, 11, 12, 13]}
         all_pins = resistances[8.9]
         pins = resistances[resistance]
+        print(pins)
         for pin in all_pins:    # Turn all pins off
-            self.operator.write_digital(0, pin)
+            # self.operator.write_digital(0, pin)
+            pass
         for pin in pins:        # Turn desired pins on
             self.operator.write_digital(1, pin)
 
@@ -384,43 +399,6 @@ class MonitorWindow(MonitorWindowBase):
         self.plot_points_spinbox.setValue(self.operator.properties['monitor']['plot_points'])
         set_spinbox_stepsize(self.plot_points_spinbox)
 
-    def start_monitor(self):
-        """
-        Called when start button is pressed.
-        Starts the monitor (thread and timer) and disables some gui elements
-        """
-        if self.operator._busy:
-            self.logger.debug("Operator is busy")
-            return
-        else:
-            self.logger.debug('Starting monitor')
-            self.operator._allow_monitor = True  # Enable operator monitor loop to run
-            self.monitor_thread.start()  # Start the operator monitor
-            self.monitor_timer.start(self.operator.properties['monitor']['gui_refresh_time'])  # Start the update timer
-            self.plot_points_spinbox.setEnabled(False)
-            self.start_button.setEnabled(False)
-            if self.test_mode == 1:  # If Charge(0)/Discharge(1) mode is selected
-                if self.test_selection == 1:    # If CV(0)/CC(1)/CR(2) test is selected
-                    self.run_cc_discharge_test()
-
-    def stop_monitor(self):
-        """
-        Called when stop button is pressed.
-        Stops the monitor:
-        - flags the operator to stop
-        - uses the Workthread stop method to wait a bit for the operator to finish, or terminate thread if timeout occurs
-        """
-        if not self.monitor_thread.isRunning():
-            self.logger.debug('Monitor is not running')
-            return
-        else:
-            # Set flag to to tell the operator to stop:
-            self.logger.debug('Stopping monitor')
-            self.operator._stop = True
-            self.monitor_thread.stop(self.operator.properties['monitor']['stop_timeout'])
-            self.operator._allow_monitor = False  # disable monitor again
-            self.operator._busy = False  # Reset in case the monitor was not stopped gracefully, but forcefully stopped
-
     def update_monitor(self):
         """
         Checks if new data is available and updates the graph.
@@ -453,16 +431,18 @@ class MonitorWindow(MonitorWindowBase):
         if time() >= self.end_time:
             self.stop_test_button()
 
-        if self.test_mode == 0:  # If Charge(0)/Discharge(1) mode is selected
-            if self.test_selection == 0:  # TODO: implement discharge function
+        # TODO: implement discharge function
+        if self.test_type == 0:     # If Charge (0) / Discharge (1) / Impedance (2) mode is selected
+            if self.test_selection == 0:    # If CV (0) / CC (1) / CR (2) test is selected
                 self.run_cv_charge_test(self.target_voltage)
-            elif self.test_selection == 1:
+            elif self.test_selection == 1:  # If CV (0) / CC (1) / CR (2) test is selected
                 self.run_cc_charge_test(self.target_current)
-        elif self.test_mode == 1:
-            if self.test_selection == 2:    # If CV(0)/CC(1)/CR(2) test is selected
-                self.run_cr_discharge_test(self.target_resistance)
 
-        if self.test_mode == 1:
+        elif self.test_type == 1:   # If Charge (0) / Discharge (1) / Impedance (2) mode is selected
+            if self.test_selection == 1:    # If CV (0) / CC (1) / CR (2) test is selected
+                self.run_cc_discharge_test(self.target_resistance)
+
+        elif self.test_type == 2:   # If Charge (0) / Discharge (1) / Impedance (2) mode is selected
             self.run_impedance_test()
 
         if self.monitor_thread.isFinished():
@@ -496,7 +476,6 @@ if __name__ == "__main__":
     import Battery_Testing_Software.labphew  # import this to use labphew style logging
     import sys
     from PyQt5.QtWidgets import QApplication
-    from Battery_Testing_Software.labphew.model.analog_discovery_2_model import Operator
 
     logging.info('Connecting to AD2 Device')
     # To use with real device
