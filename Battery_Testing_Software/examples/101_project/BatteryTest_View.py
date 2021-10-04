@@ -118,6 +118,15 @@ class MonitorWindow(MonitorWindowBase):
         self.target_resistance = resistance
         self.logger.debug("Target: " + str(round(resistance, 3)) + " Ohms")
 
+    def set_target_resistance_finished(self):
+        resistances = [512, 225, 131, 65.9, 32.9, 16.9, 8.9]    # Define possible resistances
+        desired_resistance = self.target_resistance
+        if desired_resistance not in resistances:
+            closest_resistance = min(resistances, key=lambda x: abs(x - desired_resistance))  # Find closest resistance to target
+            self.target_resistance = closest_resistance
+            self.target_resistance_spinbox.setValue(self.target_resistance)     # Update UI to new value
+            self.logger.debug("Target: " + str(round(desired_resistance, 3)) + " changed to nearest possible (" + str(round(closest_resistance, 3)) + " Ohms)")
+
     def set_min_frequency(self, frequency):
         self.logger.debug("Min. Frequency: " + str(frequency) + " Hz")
 
@@ -135,7 +144,7 @@ class MonitorWindow(MonitorWindowBase):
 
     # GUI Actions
 
-    def start_test_button(self):
+    def start_test_button(self):    # TODO: Add voltage check to make sure battery is connected before starting w/ minV
         """
         Called when start button is pressed.
         Starts the monitor (thread and timer) and disables some gui elements
@@ -154,10 +163,14 @@ class MonitorWindow(MonitorWindowBase):
                 self.monitor_timer.start(
                     int(self.operator.properties['monitor']['gui_refresh_time'] * 1000))  # start the update timer
                 # Disable UI Elements
-                self.target_voltage_spinbox.setEnabled(False)
-                self.target_current_spinbox.setEnabled(False)
                 self.start_button.setEnabled(False)
                 self.reset_button.setEnabled(False)
+                self.charge_radiobutton.setEnabled(False)
+                self.discharge_radiobutton.setEnabled(False)
+                self.target_voltage_spinbox.setEnabled(False)
+                self.target_current_spinbox.setEnabled(False)
+                self.target_resistance_spinbox.setEnabled(False)
+
                 self.end_time = time() + (float(self.max_test_time) * 60)
                 self.out_voltage = self.operator.instrument.read_analog()[0]  # Start test at measured cell voltage
                 if self.test_type == 1:  # If Charge (0) / Discharge (1) / Impedance (2) mode is selected
@@ -324,7 +337,7 @@ class MonitorWindow(MonitorWindowBase):
 
     def run_cc_charge_test(self, current, increment=0.1, margin=5):
         """
-        Feedback based; must be repeated throughout test.
+        Feedback based; this method must be repeated throughout test.
 
         :param current: desired charge current
         :param increment: fixed amount to increment voltage per control loop to get desired current
@@ -451,8 +464,11 @@ class MonitorWindow(MonitorWindowBase):
             # Enable UI Elements
             self.start_button.setEnabled(True)
             self.reset_button.setEnabled(True)
+            self.charge_radiobutton.setEnabled(True)
+            self.discharge_radiobutton.setEnabled(True)
             self.target_voltage_spinbox.setEnabled(True)
             self.target_current_spinbox.setEnabled(True)
+            self.target_resistance_spinbox.setEnabled(True)
 
     def closeEvent(self, event):
         """ Gets called when the window is closed. Could be used to do some cleanup before closing. """
