@@ -68,7 +68,7 @@ class MonitorWindow(MonitorWindowBase):
 
         self.target_voltage = 0
         self.target_current = 0
-        self.target_resistance = 510
+        self.target_resistance = 512
         self.out_voltage = self.target_voltage
 
         self.shunt_resistance = 0.24
@@ -167,6 +167,7 @@ class MonitorWindow(MonitorWindowBase):
                 self.reset_button.setEnabled(False)
                 self.charge_radiobutton.setEnabled(False)
                 self.discharge_radiobutton.setEnabled(False)
+                self.target_selection_tabs.setEnabled(False)
                 self.target_voltage_spinbox.setEnabled(False)
                 self.target_current_spinbox.setEnabled(False)
                 self.target_resistance_spinbox.setEnabled(False)
@@ -461,11 +462,12 @@ class MonitorWindow(MonitorWindowBase):
         if self.monitor_thread.isFinished():
             self.logger.debug('Monitor thread is finished')
             self.monitor_timer.stop()
-            # Enable UI Elements
+            # RE-Enable UI Elements
             self.start_button.setEnabled(True)
             self.reset_button.setEnabled(True)
             self.charge_radiobutton.setEnabled(True)
             self.discharge_radiobutton.setEnabled(True)
+            self.target_selection_tabs.setEnabled(True)
             self.target_voltage_spinbox.setEnabled(True)
             self.target_current_spinbox.setEnabled(True)
             self.target_resistance_spinbox.setEnabled(True)
