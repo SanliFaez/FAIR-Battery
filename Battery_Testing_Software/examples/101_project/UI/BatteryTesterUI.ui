@@ -1048,8 +1048,8 @@
    <slot>set_target_current()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>128</x>
-     <y>168</y>
+     <x>310</x>
+     <y>188</y>
     </hint>
     <hint type="destinationlabel">
      <x>400</x>
@@ -1064,8 +1064,8 @@
    <slot>set_target_resistance()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>168</y>
+     <x>339</x>
+     <y>188</y>
     </hint>
     <hint type="destinationlabel">
      <x>385</x>
@@ -1169,6 +1169,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>target_resistance_spinbox</sender>
+   <signal>editingFinished()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>set_target_resistance_finished()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>299</x>
+     <y>174</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>297</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>set_max_test_time()</slot>
@@ -1192,5 +1208,6 @@
   <slot>set_max_frequency()</slot>
   <slot>set_steps_per_decade()</slot>
   <slot>export_figure()</slot>
+  <slot>set_target_resistance_finished()</slot>
  </slots>
 </ui>
