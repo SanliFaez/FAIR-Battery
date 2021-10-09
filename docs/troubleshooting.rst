@@ -19,7 +19,7 @@ Software Troubleshooting
 Simple troubleshooting can be done by reading the popup errors that the Battery Testing software provides. More
 sophisticated issue however may require you to read the errors that appear in the terminal window of your code editor.
 
-**ModuleNotFoundError: No module named 'Battery_Testing_Software'**
+**ImportError: No module named 'Battery_Testing_Software'**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This occurs when your python project path variable has not been set.
 To fix this open a terminal and navigate to the project root directory:
@@ -41,6 +41,13 @@ Windows:
 .. code::
 
     set PYTHONPATH=%PYTHONPATH%;.
+
+If you want to be sure the path is set correctly, you can run the following one liner in your terminal to list your paths.
+As ever, use either :code:`python` or :code:`python3` depending on which works on your system.
+
+.. code::
+
+    python -c "import sys; print(sys.path)"
 
 **FileNotFoundError: Could not find module 'dwf' (or one of its dependencies)**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
