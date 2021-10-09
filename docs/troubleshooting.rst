@@ -36,7 +36,7 @@ Mac / Linux:
 
     export PYTHONPATH=.
 
-Mac / Linux:
+Windows:
 
 .. code::
 
@@ -53,7 +53,7 @@ NOTE: Make sure to not just install waveforms, but most importantly install the 
 On windows this is just a matter of checking the following options in the installer.
 
 .. image:: _static/Windows_waveforms.png
-   :scale: 50 %
+   :scale: 40 %
    :alt: Installing waveforms sdk on windows
 
 On mac once the installer is opened, drag not only the waveforms app to applications, but also the dwf.framework to your Frameworks folder.
