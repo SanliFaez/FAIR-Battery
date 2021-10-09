@@ -19,7 +19,7 @@ Software Troubleshooting
 Simple troubleshooting can be done by reading the popup errors that the Battery Testing software provides. More
 sophisticated issue however may require you to read the errors that appear in the terminal window of your code editor.
 
-**Error: Module Not Found**
+**ModuleNotFoundError: No module named 'Battery_Testing_Software'**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This occurs when your python project path variable has not been set.
 To fix this open a terminal and navigate to the project root directory:
@@ -42,6 +42,25 @@ Mac / Linux:
 
     set PYTHONPATH=%PYTHONPATH%;.
 
+**FileNotFoundError: Could not find module 'dwf' (or one of its dependencies)**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This happens when the `waveforms SDK <https://mautic.digilentinc.com/waveforms-download>`_ is not installed correctly.
+It is a dependency of the dwf module, and therefore essential for controlling the AD2.
+For a great startup guide visit: https://digilent.com/reference/software/waveforms/waveforms-3/getting-started-guide
+
+NOTE: Make sure to not just install waveforms, but most importantly install the runtime and SDK.
+
+On windows this is just a matter of checking the following options in the installer.
+
+.. image:: _static/Windows_waveforms.png
+   :scale: 50 %
+   :alt: Installing waveforms sdk on windows
+
+On mac once the installer is opened, drag not only the waveforms app to applications, but also the dwf.framework to your Frameworks folder.
+
+.. image:: _static/Mac_waveforms.png
+   :scale: 50 %
+   :alt: Installing waveforms sdk on mac
 
 **Error: AD2 Device not connected**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
