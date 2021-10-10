@@ -27,6 +27,7 @@ from Battery_Testing_Software.labphew.core.base.general_worker import WorkThread
 from Battery_Testing_Software.labphew.core.base.view_base import MonitorWindowBase
 from Battery_Testing_Software.labphew.model.analog_discovery_2_model import Operator
 
+
 class MonitorWindow(MonitorWindowBase):
 
     def __init__(self, operator: Operator, parent=None):
@@ -506,11 +507,11 @@ if __name__ == "__main__":
     # TODO: add simulated device functions
     try:
         instrument = DfwController()
+        opr = Operator(instrument)  # Create operator instance
+        opr.load_config()
     except dwf.DWFError as err:
         logging.info(str(err) + "Could not connect to AD2 Device. Exiting...")
         exit(-1)
-    opr = Operator(instrument)  # Create operator instance
-    opr.load_config()
 
     import platform
     if platform.system() == 'Darwin':
