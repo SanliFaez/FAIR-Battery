@@ -17,7 +17,7 @@ FAIR-Battery is meant to be:
 
 
 You can find the code of this package on `Github <https://github.com/sanlifaez/FAIR-Battery>`_.
-The documentation is hosted on `Read The Docs <https://readthedocs.org/projects/FAIR-Battery>`_.
+The documentation is hosted on `Read The Docs <https://fair-battery.readthedocs.io/en/latest/index.html#>`_.
 
 .. toctree::
    :maxdepth: 4
@@ -37,11 +37,6 @@ The documentation is hosted on `Read The Docs <https://readthedocs.org/projects/
 
 Acknowledgement
 ===============
-+
-
-
-Other resources
-=========================================
-+
++ labphew - this project is a fork of labphew
 
 If you know of a package that should be added to this list, please do not hesitate to drop us a message.
