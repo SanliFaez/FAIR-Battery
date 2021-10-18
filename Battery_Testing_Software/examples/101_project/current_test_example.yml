@@ -1,4 +1,4 @@
-test_file:          "current_test_example.csv"
+test_file: "current_test_example.csv"
 
 test:
   test_mode:          0     # 0 = Charge/Discharge, 1 = Impedance Analysis
@@ -9,11 +9,11 @@ test:
   target_resistance:  0     # [Ohms] Only applicable for mode 2 (CR)
   max_test_time:      0.5   # [minutes] Max test time
   max_test_voltage:   4     # [V] Max cell voltage (0-4)
-  min_test_voltage:   3.2     # [V] Min cell voltage (0-4)
+  min_test_voltage:   3.2   # [V] Min cell voltage (0-4)
   max_current:        100   # [mA] Max current
   flow_rate:          45    # [lts/min] Flow rate of pump
   time_step:          0.10  # [seconds] Note that the basic analog approach doesn't really go faster than 0.010 seconds
   plot_points:        1100  # Number of points to plot in viewer
 
 hardware:
-  shunt_resistance: 0.24    # This is the resistance of the shunt resistor. Adjust this if the current reading is wrong
+  shunt_resistance:   0.24  # This is the resistance of the shunt resistor. Adjust this if the current reading is wrong
