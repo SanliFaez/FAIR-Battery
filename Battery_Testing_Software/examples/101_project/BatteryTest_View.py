@@ -209,6 +209,7 @@ class MonitorWindow(MonitorWindowBase):
         # self.label_1.setValue(0)
         self.measured_voltage_lineedit.setText("0.00")
         self.measured_current_lineedit.setText("0.00")
+        self.measured_coulombs_lineedit.setText("0.00")
         self.operator.pps_out(0, 4)
         pass
 
@@ -433,12 +434,15 @@ class MonitorWindow(MonitorWindowBase):
             self.measured_current_lineedit.setText(str(self.current))
             time_elapsed = timedelta(seconds=round(self.operator.analog_monitor_time[-1], 1))
 
-            timestr = str(time_elapsed).split('.')  # TODO: this section needs a one-liner
+            timestr = str(time_elapsed).split('.')
             if len(timestr) == 1:
                 timestr.append("00")
             else:
                 timestr[1] = timestr[1][0:2]
             self.time_elapsed_value.setText(".".join(timestr))
+
+            measured_coulombs = self.current * self.operator.properties['monitor']['time_step']   # Calculate coulombs
+            self.measured_coulombs_lineedit.setText(str(round(measured_coulombs, 2)))  # Display coulombs
 
             self.buffer_time = np.append(self.buffer_time, self.operator.analog_monitor_time[-1])
             self.buffer_voltage = np.append(self.buffer_voltage, self.operator.analog_monitor_1[-1])
