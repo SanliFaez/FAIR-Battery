@@ -1,4 +1,5 @@
 import sys
+sys.path.append('../')
 import os
 import labphew
 from labphew.core.tools.gui_tools import open_config_dialog
@@ -35,8 +36,8 @@ def main(config_file = None):
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     # Load your classes and create your gui:
 
-    # from labphew.controller.digilent.waveforms import DfwController  If you were to use with real device
-    from labphew.controller.digilent.waveforms import SimulatedDfwController as DfwController  # To test with simulated device
+    from labphew.controller.digilent.waveforms import DfwController  # If you were to use with real device
+    #from labphew.controller.digilent.waveforms import SimulatedDfwController as DfwController  # To test with simulated device
     from labphew.model.analog_discovery_2_model import Operator
     from labphew.view.analog_discovery_2_view import MonitorWindow, ScanWindow
 

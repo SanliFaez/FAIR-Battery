@@ -313,7 +313,7 @@ class ScanWindow(ScanWindowBase):
             try:
                 self.scan_timer.start(self.operator.properties['scan']['gui_refresh_time'])
             except:
-                self.scan_timer.start(0.05)  # otherwise use default value
+                self.scan_timer.start(5)  # otherwise use default value
 
     def pause_scan(self):
         """

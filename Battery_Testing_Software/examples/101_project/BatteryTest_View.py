@@ -17,7 +17,9 @@ from PyQt5.QtCore import QTimer, QRectF
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QPixmap, QPainter
 
-import ruamel.yaml
+import yaml
+import sys
+sys.path.append('../')
 import Battery_Testing_Software.labphew
 import logging
 import os
@@ -282,7 +284,7 @@ class MonitorWindow(MonitorWindowBase):
         filename, file_type = QFileDialog.getSaveFileName(self, 'Save Test')
         with open(filename, 'w') as f:
             # TODO: update all self.test_config parameters here
-            ruamel.yaml.YAML().dump(self.test_config, f)
+            yaml.YAML().dump(self.test_config, f)
             self.logger.debug('Saving Test - Unfinished & UNTESTED')
             f.close()
 
@@ -295,7 +297,7 @@ class MonitorWindow(MonitorWindowBase):
         """
         filename, file_type = QFileDialog.getOpenFileName(self, 'Load Test')
         with open(filename, 'r') as f:
-            self.test_config = ruamel.yaml.safe_load(f)
+            self.test_config = yaml.safe_load(f)
         self.test_config['config_file'] = filename
         self.update_parameters()
 

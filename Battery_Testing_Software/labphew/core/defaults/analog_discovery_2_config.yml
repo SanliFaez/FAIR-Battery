@@ -23,8 +23,8 @@ scan:
   stabilize_time:   0.001 # (s)
   ao_channel:       2
   ai_channel:       2
-  stop_timeout:       3   # (s) How much time to give scan loop to stop before forcefully terminating it
-  gui_refresh_time:   .01     # (s) How often gui checks if here's new data (usually quicker than time_step)
+  stop_timeout:       3000   # (ms) How much time to give scan loop to stop before forcefully terminating it
+  gui_refresh_time:   10     # (ms) How often gui checks if here's new data (usually quicker than time_step)
 
 # set limits for the analog out channels and optionally give them custom display names
 ao:
@@ -39,13 +39,13 @@ ao:
 
 # set parameters for the monitor here
 monitor:
-  time_step:        0.050   # (s) Note that the basic analog approach doesn't really go faster than 0.010 seconds
+  time_step:        50   # (ms) Note that the basic analog approach doesn't really go faster than 0.010 seconds
   plot_points:      110
   1:
     name:           AI Channel 1
     xlabel:         'time'
   2:
     name:           AI Channel 2
-  gui_refresh_time: .01     # (s) How often gui checks if here's new data (usually quicker than time_step)
-  text_update_time: .5      # (s) Minimum time for the gui to update the value displayed as text
-  stop_timeout:     1       # (s) How much time to give monitor to stop before forcefully terminating it
+  gui_refresh_time: 10     # (ms) How often gui checks if here's new data (usually quicker than time_step)
+  text_update_time: 500      # (ms) Minimum time for the gui to update the value displayed as text
+  stop_timeout:     1000      # (ms) How much time to give monitor to stop before forcefully terminating it

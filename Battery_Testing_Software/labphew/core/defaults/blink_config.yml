@@ -13,9 +13,9 @@ blink instrument:
 
 # Set parameters for the monitor here:
 monitor:
-  time_step:        0.100   # period with which Operator retrieves data from device
-  gui_refresh_time: 0.010   # (s) How often gui checks if here's new data (usually quicker than time_step)
-#  stop_timeout:     1      # (s) How much time to give monitor to stop before forcefully terminating it
+  time_step:        1   # (ms) period with which Operator retrieves data from device
+  gui_refresh_time: 10   # (ms) How often gui checks if here's new data (usually quicker than time_step)
+#  stop_timeout:     1000      # (ms) How much time to give monitor to stop before forcefully terminating it
 
 # Set parameters for the scan here
 # This scan measure the state of the device a number of times with a specified interval time

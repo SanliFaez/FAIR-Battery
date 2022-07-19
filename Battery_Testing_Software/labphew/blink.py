@@ -1,4 +1,5 @@
 import sys
+sys.path.append('../')
 import os
 import labphew
 from labphew.core.tools.gui_tools import open_config_dialog

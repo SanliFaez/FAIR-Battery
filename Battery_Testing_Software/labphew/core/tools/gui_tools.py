@@ -6,7 +6,6 @@ Collection of tools that might be helpful for GUIs
 
 """
 import logging
-import labphew
 import numpy as np
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
