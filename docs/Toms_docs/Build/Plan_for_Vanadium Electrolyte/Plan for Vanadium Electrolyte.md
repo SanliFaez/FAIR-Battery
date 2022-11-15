@@ -46,6 +46,7 @@ This would mean that in presence of O<sub>2</sub>, instead of reaction 3, the fo
 This would lead to the ratio of V(IV)/V(III) becoming less than one (with an initial ratio of 1:1 of V(V)/V(IV) before discharge).
 This would also cause a disbalance in the V(V)/V(II) ratio when the battery is then charged. This disbalance results in loss of capacity.
 To retain capacity through charge/discharge cycles, the solution containing V<sup>2+</sup> should be anaerobe.
+Reaction 4 also shows that formation of hydrogen is possible acidic environments. This means the solution should at all times be able to release this gas to the atmosphere.
 
 ## Preperation of V(IV)-solutions
 ---
@@ -116,10 +117,10 @@ The electrolyte synthesis is assumed to be finished, when the solution reducing 
 ### What should be added to this document?
 - I'm not entirely sure if the reverse reaction 2 happens before the reverse of reaction 5, since reaction 5 requires 2 electrons. V is J/C, so I would suspect that that the reverse of reaction 5 yields more stable products.
 - Not all reaction's electropotential are known to us yet.
-- Pictures should of our experimental setup should be added to this document.
+- Pictures of our experimental setup should be added to this document.
 - I'll try to find a paper/website which has a clear description of how to do molar calculations. This paper will be put in theory.
 - Complete the material list (how much tube and what is the diameter of this tube)
-- Add H_2 to the document
+
 
 
 ## Bibliography
