@@ -1,0 +1,135 @@
+# Synthesis of Vanadium Electrolyte
+We plan on making 2 electrolytes where all chemical energy is stored vanadium cathions. When completely charged, one electrolyte contains V(V) ions and the other contains V(II) ions. These will respectively be converted to a V(IV) and V(III) solution.
+
+## Material
+---
+- TTi QL335P linear regulated power supply
+- 2.6 M (or higher) H<sub>2</sub>SO<sub>4</sub> solution
+- VOSO<sub>4</sub>
+- Demi water
+- 2 plastic ≥100 mL plastic beakers
+- Plastic tubes for nitrogen supply and connection of electrolyte tanks to the battery cell
+
+## Theory
+---
+The following half reactions and redox reaction will take place in the electrolyte [1][2]:
+
+|\# |Reaction | ΔE |
+|-|--- | ---:|
+|1| V<sup>3+</sup> +  e<sup>-</sup> &rarr; V<sup>2+</sup> | - 0.255 V vs. SHE|
+|2| V(V)O<sub>2</sub><sup>+</sup> +  2 H<sup>+</sup> + e<sup>-</sup> &rarr; V(IV)O<sup>2+</sup> + H<sub>2</sub>O |  1.004 V vs. SHE|
+|3| V<sup>2+</sup> + 2 VO<sub>2</sub><sup>+</sup> +  4 H<sup>+</sup> &rarr; V<sup>3+</sup> + 2 VO<sup>2+</sup> + 2 H<sub>2</sub>O |  1.259 V|
+
+**Table 1**\
+
+Reaction 3 is the reaction of the battery discharging. \
+The solution will consist of other chemical components which can undergo half reactions as well [3]:
+
+|\# |Reaction | ΔE |
+|-|--- | ---:|
+|4|2 H<sup>+</sup> + 2 e<sup>-</sup> &rarr; H<sub>2</sub> | 0 V vs. SHE|
+|5| 4 H<sup>+</sup> + O<sub>2</sub> + 4 e<sup>-</sup> &rarr; 2 H<sub>2</sub>O | 1.23 V vs. SHE|
+|6|2 H<sup>+</sup> + SO<sub>4</sub><sup>2-</sup> &rarr; H<sub>2</sub>O + SO<sub>3</sub><sup>2-</sup> | - |
+
+**Table 2**
+
+The electropotential of the reduction of SO<sub>4</sub><sup>2-</sup> is unknown to us. However, we suspect it is very negative since H<sub>2</sub>SO<sub>4</sub> is a strong acid. Also there is no gas formation, so this reaction should cause no danger if it happens. \
+The reduction of O<sub>2</sub> with H<sup>+</sup> has a higher potential than that of the reduction of VO<sub>2</sub><sup>+</sup>. \
+This would mean that in presence of O<sub>2</sub>, instead of reaction 3, the following redox reaction would occur:
+
+|\# |Reaction | ΔE |
+|-|--- | ---:|
+|7|2 V<sup>2+</sup> + 4 H<sup>+</sup> + O<sub>2</sub> &rarr; 2 V<sup>3+</sup> + 2 H<sub>2</sub>O | |
+
+**Table 3**
+
+This would lead to the ratio of V(IV)/V(III) becoming less than one (with an initial ratio of 1:1 of V(V)/V(IV) before discharge).
+This would also cause a disbalance in the V(V)/V(II) ratio when the battery is then charged. This disbalance results in loss of capacity.
+To retain capacity through charge/discharge cycles, the solution containing V<sup>2+</sup> should be anaerobe.
+
+## Preperation of V(IV)-solutions
+---
+IMPORTANT: before working with any chemical compound, it is important to check its MSDS (Material Safety Data Sheet) and its reactivity with air, water and other compounds it might get exposed to.
+A MSDS can be found by simply typing the name of the compound with MSDS after it into any search engine.
+
+The synthesis of our electrolyte is based on C.T.C Wan, 2020 [4]. The goal of this experiment is to synthesize a fully charged battery. In other words, one container should contain V(V) (no V(IV)) and the other container should contain V(II) (no V(III)). Our starting compound is V(IV) in the form of VOSO<sub>4</sub>. By oxidizing VO<sup>2+</sup> in one halfcell, while reducing VO<sup>2+</sup> on the other halfcell, the desired electrolyte can be synthesized:
+
+|\# |Reaction | ΔE |
+|-|--- | ---:|
+|8| VO<sup>2+</sup> +  2 e<sup>-</sup> &rarr; V<sup>2+</sup> + O<sup>2-</sup>| -|
+|9| VO<sup>2+</sup> + H<sub>2</sub>O &rarr; V(V)O<sub>2</sub><sup>+</sup> + 2 H<sup>+</sup> + e<sup>-</sup> |  - 1.004 V vs. SHE|
+
+**Table 4** \
+Since reaction 8 is a double reduction and reaction 9 is only a singular oxidation, the oxidation side of the cell requires twice as much V(IV) as the reduction side of the cell.
+
+It is important to understand that half reactions 8 and 9 are part of the synthesis of the electrolyte of the cell. Even though these reactions together form a redox reaction, these synthetic half reactions shouldn't be assigned to charging process of the cell. The charging and discharging of the cell is exclusively reversible redox reaction 3 from Table 1. \
+The electrolytes are made acidic with H<sub>2</sub>SO<sub>4</sub> to prevent V(V) from precipitating [5]. To calculate how many grams of your starting compound you are required for a V(IV) solution of certain molarity, the following equation can be used:
+
+![equation1](Formula_Images/calculate_weight.png) &emsp; (equation 1)
+
+Where *m* is the mass you should add to get the desired molarity of your solution, *m<sub>u</sub>* is the molar mass of the compound your adding<sup>**1**</sup> in g mol<sup>-1</sup>, *n* is the amount of atoms of the desired compound within your salt/molecule<sup>**2**</sup>, *M* is the desired molarity in mol L<sup>-1</sup>, *V<sub>goal</sub>* is the desired volume of your solution in L and purity is the purity of your compound in percentage <sup>**3**</sup>.\
+It might be the case that the concentration of your H<sub>2</sub>SO<sub>4</sub> solution is higher than you want it to be. In that case it is possible to dilute it with demi water. Using the following equation, you can determine how much H<sub>2</sub>SO<sub>4</sub> solution you should dilute:
+
+![equation2](Formula_Images/dilution_H2SO4.png) &emsp; (equation 2)
+
+Where *V<sub>0</sub>* is the volume of your original  solution H<sub>2</sub>SO<sub>4</sub> in L, *M<sub>goal</sub>* is desired molarity of your desired H<sub>2</sub>SO<sub>4</sub> solution in mol L<sup>-1</sup>, *M<sub>0</sub>* is the molarity of the original H<sub>2</sub>SO<sub>4</sub> solution in mol L<sup>-1</sup> and *V<sub>goal</sub>* is the volume of your desired H<sub>2</sub>SO<sub>4</sub> solution in L. \
+We can calculate the time it takes for a redox reaction to go from one side of the reaction to the other with the following equation:
+
+![equation3](Formula_Images/time_to_charge.png) &emsp; (equation 3)
+
+Where *t* is the time it takes for redox reaction to move completely from one side of the reaction to the other in seconds. Specifically for a battery, t is the charging time. n<sub>e</sub> is the total amount of transferred electrons in the redox reaction in mol, ℱ is the Faraday constant in C mol<sup>-1</sup> and *I* is the electric current in C s<sup>-1</sup>. \
+The voltage on the cell can then be derived from Ohm's law:
+
+![equation4](Formula_Images/OHM.png) &emsp; (equation 4)
+
+Where *U* is the voltage on the electric circuit in V and *R* is the resistance of the circuit in Ω. This means that the voltage and the current through the cell can't be modulated simultaneously.
+
+Using equation 1 and 2, we make one 1.5 mol L<sup>-1</sup> V(IV) solution for the reduction (reaction 7) and one 3 mol L<sup>-1</sup> V(IV) solution for the oxidation (reaction 8). Both solutions have have a volume of 50 mL with a 2.6 mol L<sup>-1</sup> H<sub>2</sub>SO<sub>4</sub> concentration. Both solutions should have a blue, transparant colour caused by V(IV). Because of a higher concentration, the blue of the 3 mol L<sup>-1</sup> should be darker than the blue of the 1.5 mol L<sup>-1</sup> solution.\
+It is important to able these tanks to release possibly formed gasses to prevent your cell from exploding. It is also important that these thanks are made of plastic, since the solution will be very acidic and therefore reactive with a lot of materials.
+
+
+## Synthesis of the electrolyte
+---
+Each solution should be connected to one half of the cell. To prevent reaction 7, we put a nitrogen stream through the reductor tank (reaction 8).\
+Again, it is important to keep in mind that the following redox reaction is synthesis of the charged electrolyte of the battery. This reaction is not the actual charging reaction once the battery is in actual use.\
+Because of the internal resistance of the battery, we need to supply the cell with an overpotential higher than the 1.259 V of reaction 3. In Choi, 2013 [2], they decide to charge the battery with a current <4 mA cm<sup>-2</sup> to prevent formation of oxygen (reverse of reaction 5) on the oxidation half of the cell. Given that the membrane has a surface of about 4 cm<sup>2</sup> and the vanadium can transfer 0.15 mol e<sup>-</sup>, we can use equation 3 and 4 to calculate the time it would take to synthesize the charged electrolyte. If we would use a current of 4 mA, this would take 250 hours.\
+Because we don't want the synthesis and (eventually charging) to take that long, we start off with a current of 20 mA and gradually increase it to get it as high as possible. We make sure the voltage won't surpass 1.43 V, to prevent formation of oxygen (reaction 3).\
+The electrolyte synthesis is assumed to be finished, when the solution reducing solution (reaction 8) has become purple <sup>**4**</sup>. It is important to keep the V(II)/V(III) electrolyte anaerobe. We do this by maintaining the the stream of nitrogen gas through the electrolyte.
+
+## Challenges
+---
+- As stated in the theory, the electrolyte containing V<sup>2+</sup> should be anaerobe to contain the capacity of the battery over charge/discharge cycles. One of the challenges would be to do this without a constant stream of nitrogen through the container holding the V<sup>2+</sup>.
+- In some reaction tables, the electropotential is left blanc. This is because this value is unknown to us. Knowing some of these values might lead to valuable insights.
+- Determining the end of the synthesis of the charged electrolyte based on the reduced solution becoming purple is a qualitative method. It would be be better to quantitatively determine the end of the synthesis.
+- It is quite unpractical to keep the V(II)/V(III) electrolyte anaerobe using a constant stream of nitrogen gas. A more practical solution would be preferred.
+
+### Footnotes
+---
+<sup>**1**</sup> In our case our starting compound is VOSO<sub>2</sub>
+
+<sup>**2**</sup> In our case there is 1 V(IV) atom in 1 VOSO<sub>2</sub> molecule
+
+<sup>**3**</sup> This should be given by the supplier of your V(IV) salt in the product description
+
+<sup>**4**</sup> Colours of V(V), V(IV), V(III) and V(II) oxidation states are respectively yellow, green, blue and purple [5].
+
+### What should be added to this document?
+- I'm not entirely sure if the reverse reaction 2 happens before the reverse of reaction 5, since reaction 5 requires 2 electrons. V is J/C, so I would suspect that that the reverse of reaction 5 yields more stable products.
+- Not all reaction's electropotential are known to us yet.
+- Pictures should of our experimental setup should be added to this document.
+- I'll try to find a paper/website which has a clear description of how to do molar calculations. This paper will be put in theory.
+- Complete the material list (how much tube and what is the diameter of this tube)
+- Add H_2 to the document
+
+
+## Bibliography
+---
+[1] Molchanov, B. (2016). Development and testing of mechanically stable Vanadium redox flow battery.
+
+[2] Choi, N. H., Kwon, S. K., & Kim, H. (2013). Analysis of the oxidation of the V (II) by dissolved oxygen using UV-visible spectrophotometry in a vanadium redox flow battery. Journal of the Electrochemical Society, 160(6), A973.
+
+[3] Binas (6th ed.). (2013). [Book]. Noordhoff Uitgevers.
+
+[4] Wan, C. T. C., López Barreiro, D., Forner-Cuenca, A., Barotta, J. W., Hawker, M. J., Han, G., ... & Buehler, M. J. (2020). Exploration of biomass-derived activated carbons for use in vanadium redox flow batteries. ACS Sustainable Chemistry & Engineering, 8(25), 9472-9482.
+
+[5] Jim Clark (2003 (modified June 2015)), VANADIUM, https://www.chemguide.co.uk/inorganic/transition/vanadium.html
