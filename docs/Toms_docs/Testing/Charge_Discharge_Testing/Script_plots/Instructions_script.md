@@ -22,6 +22,8 @@
   t = [10, 100, 200]\
   U = [1.40, 1.43, 1.44]
 
-2. Run the script. There is a button for this somewhere above, but you can also use the shortcut F5.
+2. If you want to save to plots you are about to make into the same folder as this script, put above the script behind Save True, instead of False.
 
-3. A plot is made of both voltage and current as a function of time. Also a plot is made of the voltage as a function of capacity.
+3. Run the script. There is a button for this somewhere above, but you can also use the shortcut F5.
+
+4. A plot is made of both voltage and current as a function of time. Also a plot is made of the voltage as a function of capacity.

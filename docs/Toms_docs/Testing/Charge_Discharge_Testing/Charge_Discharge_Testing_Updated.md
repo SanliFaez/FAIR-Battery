@@ -31,9 +31,9 @@ The amount of current run through the battery cell is dependent on the size of y
 **Figure 1** An example of charge-discharge cycles of a VRFB from [O'Connor, 2021]. The used solution here is 1.5 M V<sup>3.5</sup> in 3M H<sub>2</sub>SO<sub>4</sub>. The membrane has a surface of 25 cm<sup>2</sup> and the flow rate is 25 mL min<sup>-1</sup>.
 
  As you can see in Fig. 1, the cycles take quite some time. Best would be to have a tracking system, which can track the important quantities for you: voltage (V), time (s), current (A) and optionally capacity (A.h). A device which could track these values would be a potentiostat. If you do not own a potentiostat, 1 cycle would suffice. However the more cycles you track, the more you will know about your battery.\
- In case that your potentiostat or powersupply can't show used capacity, you'll need to integrate the current over time to know the used capacity.
- There will be a folder called "Script_capacity" added in the folder of this document. This folder contains "Script_capacity.py" which integrates the current over time for you. This folder also contain a file "Instructions_script.md" which explains how to use the script.
+ In case that your potentiostat or powersupply can't show used capacity, you can determine the capacity by taking the product of the current and the time since that has past since the last flip of the direction of the current.
  The data can plotted as voltage and current as function of time (see Fig. 1). Another way to show the data is to plot voltage as a function of capacity.\
+ In the folder of this document, there will be a folder called "Script_plots". This folder contains a python script "Script_plots.py" and an instruction file on how to use this script "Instructions_script.md".\
  In case you're using a potentiostat, make sure it can supply high enough currents and voltages. If it can, it will probably come accompanied by a software program which can generate the necessary data in plots for you.
 
 
