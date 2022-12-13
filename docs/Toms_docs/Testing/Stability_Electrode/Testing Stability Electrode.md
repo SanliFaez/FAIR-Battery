@@ -1,4 +1,4 @@
-# Testing Stability Electrode
+# Testing Stability Electrode (THIS FILE IS FAR FROM FINISHED)
 It is important that all the components of the cell are inert to the electrolyte. Most of components of the cell are made of plastic, which won't cause any trouble in a redoxreactive environment. However, depending on the material, the electrode can also react with components from the electrode. Change in material of the electrode might  increase internal impedance or it is also possible the electrode dissolves. \
 Within this experiment, both the stability of current collectors and current conductors can be tested, based upon their resistance measured before and after exposure to the electrolyte.
 

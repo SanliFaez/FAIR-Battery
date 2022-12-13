@@ -44,7 +44,7 @@ There is a python script within the same folder as this document, which performs
 
 #### Charging of the battery
 It is now time to charge the battery. Since the efficiency is a quantity of interest, it is important to do this at a voltage as low as possible. It is also a goal to charge the battery as fast as possible. To do both satisfy these commands, we do the following:\
-we choose the vary the current. We start off at a current of 20 mA and slowly increase the current. To make sure we get a good efficiency and also prevent (too many) other half reactions from happening, we put a maximum voltage limit on the power supply of 1.43 V.
+We choose to vary the current. We start off at a current of 20 mA and slowly increase the current. To make sure we get a good efficiency and also prevent (too many) other half reactions from happening, we put a maximum voltage limit on the power supply of 1.43 V.
 
 To measure *E<sub>out</sub>*, we use the Digilent Analog Discovery 2 to measure the terminal voltage of the battery as a function of time at fixed current upon discharge. We discharge the cell with a current of 100 mA. In project_instructions.md, it is described how to do this using the Digilent Analog Discovery 2 and Pstrace 5.9. Again, the python script in the same folder as this document can be used to integrate the voltage to find the energy.
 

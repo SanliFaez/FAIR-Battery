@@ -24,5 +24,4 @@ plt.xlabel('$I$ ('+I_unit+')')
 plt.ylabel('$U$ ('+V_unit+')')
 
 
-
 #legend = plt.legend(loc='best', fontsize='medium')

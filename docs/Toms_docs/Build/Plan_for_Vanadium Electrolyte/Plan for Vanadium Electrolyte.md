@@ -17,7 +17,7 @@ The following half reactions and redox reaction will take place in the electroly
 |\# |Reaction | ΔE |
 |-|--- | ---:|
 |1| V<sup>3+</sup> +  e<sup>-</sup> &rarr; V<sup>2+</sup> | - 0.255 V vs. SHE|
-|2| V(V)O<sub>2</sub><sup>+</sup> +  2 H<sup>+</sup> + e<sup>-</sup> &rarr; V(IV)O<sup>2+</sup> + H<sub>2</sub>O |  1.004 V vs. SHE|
+|2| V(IV)O<sup>2+</sup> + H<sub>2</sub>O &rarr;  V(V)O<sub>2</sub><sup>+</sup> +  2 H<sup>+</sup> + e<sup>-</sup> |  1.004 V vs. SHE|
 |3| V<sup>2+</sup> + 2 VO<sub>2</sub><sup>+</sup> +  4 H<sup>+</sup> &rarr; V<sup>3+</sup> + 2 VO<sup>2+</sup> + 2 H<sub>2</sub>O |  1.259 V|
 
 **Table 1**\
@@ -46,14 +46,14 @@ This would mean that in presence of O<sub>2</sub>, instead of reaction 3, the fo
 This would lead to the ratio of V(IV)/V(III) becoming less than one (with an initial ratio of 1:1 of V(V)/V(IV) before discharge).
 This would also cause a disbalance in the V(V)/V(II) ratio when the battery is then charged. This disbalance results in loss of capacity.
 To retain capacity through charge/discharge cycles, the solution containing V<sup>2+</sup> should be anaerobe.
-Reaction 4 also shows that formation of hydrogen is possible acidic environments. This means the solution should at all times be able to release this gas to the atmosphere.
+Reaction 4 also shows that formation of hydrogen is possible acidic environments. This means the solution should at all times be able to release this gas to the atmosphere to prevent the cell from exploding.
 
 ## Preperation of V(IV)-solutions
 ---
-IMPORTANT: before working with any chemical compound, it is important to check its MSDS (Material Safety Data Sheet) and its reactivity with air, water and other compounds it might get exposed to.
+IMPORTANT: before working with any chemical compound, it is important to check its MSDS (Material Safety Data Sheet) and its reactivity with air, water and other compounds in the electrolyte.
 A MSDS can be found by simply typing the name of the compound with MSDS after it into any search engine.
 
-The synthesis of our electrolyte is based on C.T.C Wan, 2020 [4]. The goal of this experiment is to synthesize a fully charged battery. In other words, one container should contain V(V) (no V(IV)) and the other container should contain V(II) (no V(III)). Our starting compound is V(IV) in the form of VOSO<sub>4</sub>. By oxidizing VO<sup>2+</sup> in one halfcell, while reducing VO<sup>2+</sup> on the other halfcell, the desired electrolyte can be synthesized:
+The synthesis of our electrolyte is based on O'Connor, 2021 [6]. The goal of this experiment is to synthesize a fully charged battery. In other words, one container should contain V(V) (no V(IV)) and the other container should contain V(II) (no V(III)). Our starting compound is V(IV) in the form of VOSO<sub>4</sub>. By oxidizing VO<sup>2+</sup> in one halfcell, while reducing VO<sup>2+</sup> on the other halfcell, the desired electrolyte can be synthesized:
 
 |\# |Reaction | ΔE |
 |-|--- | ---:|
@@ -85,24 +85,25 @@ The voltage on the cell can then be derived from Ohm's law:
 
 Where *U* is the voltage on the electric circuit in V and *R* is the resistance of the circuit in Ω. This means that the voltage and the current through the cell can't be modulated simultaneously.
 
-Using equation 1 and 2, we make one 1.5 mol L<sup>-1</sup> V(IV) solution for the reduction (reaction 7) and one 3 mol L<sup>-1</sup> V(IV) solution for the oxidation (reaction 8). Both solutions have have a volume of 50 mL with a 2.6 mol L<sup>-1</sup> H<sub>2</sub>SO<sub>4</sub> concentration. Both solutions should have a blue, transparant colour caused by V(IV). Because of a higher concentration, the blue of the 3 mol L<sup>-1</sup> should be darker than the blue of the 1.5 mol L<sup>-1</sup> solution.\
-It is important to able these tanks to release possibly formed gasses to prevent your cell from exploding. It is also important that these thanks are made of plastic, since the solution will be very acidic and therefore reactive with a lot of materials.
+First make a 150 mL 2.6 M H<sub>2</sub>SO<sub>4</sub>-solution.
+Using equation 1 and 2, we make 150 mL 1.5 mol L<sup>-1</sup> V(IV) solution. We use VOSO<sub>4</sub> for this.
+50 mL of this solution is used for the reduction (reaction 7) and 100 mL for the oxidation (reaction 8). Both solutions should have a blue, transparent colour caused by V(IV). Because of a higher concentration.\
+It is important to able these tanks to release possibly formed gasses to prevent your cell from exploding. It is also important that these tanks are made of a material which is inert to an acidic environment.
 
 
 ## Synthesis of the electrolyte
 ---
-Each solution should be connected to one half of the cell. To prevent reaction 7, we put a nitrogen stream through the reductor tank (reaction 8).\
+Each solution should be connected to one half of the cell. To prevent reaction 7, we put a humidified nitrogen stream through the reductor tank (reaction 8).\
 Again, it is important to keep in mind that the following redox reaction is synthesis of the charged electrolyte of the battery. This reaction is not the actual charging reaction once the battery is in actual use.\
-Because of the internal resistance of the battery, we need to supply the cell with an overpotential higher than the 1.259 V of reaction 3. In Choi, 2013 [2], they decide to charge the battery with a current <4 mA cm<sup>-2</sup> to prevent formation of oxygen (reverse of reaction 5) on the oxidation half of the cell. Given that the membrane has a surface of about 4 cm<sup>2</sup> and the vanadium can transfer 0.15 mol e<sup>-</sup>, we can use equation 3 and 4 to calculate the time it would take to synthesize the charged electrolyte. If we would use a current of 4 mA, this would take 250 hours.\
-Because we don't want the synthesis and (eventually charging) to take that long, we start off with a current of 20 mA and gradually increase it to get it as high as possible. We make sure the voltage won't surpass 1.43 V, to prevent formation of oxygen (reaction 3).\
-The electrolyte synthesis is assumed to be finished, when the solution reducing solution (reaction 8) has become purple <sup>**4**</sup>. It is important to keep the V(II)/V(III) electrolyte anaerobe. We do this by maintaining the the stream of nitrogen gas through the electrolyte.
+Because of the internal resistance of the battery, we need to supply the cell with an overpotential higher than the 1.259 V of reaction 3. We charge the battery with a current 50 mA cm<sup>-2</sup>. As soon as the voltage reaches an overpotential of 1.75 V, we disconnect the battery from the power supply and stop the flow of the electrolyte. The battery should have now reached a state of charge (SOC) of about 90%.\
+The electrolyte synthesis can be assumed to be finished, when the reducing solution (reaction 8) has become purple and the oxidizing solution has become yellow <sup>**4**</sup>.
+It is important to keep the V(II)/V(III) electrolyte anaerobe. We do this by maintaining the the stream of nitrogen gas through the electrolyte or by applying a film of paraffin oil on top the electrolytes (to save nitrogen gas).
 
 ## Challenges
 ---
 - As stated in the theory, the electrolyte containing V<sup>2+</sup> should be anaerobe to contain the capacity of the battery over charge/discharge cycles. One of the challenges would be to do this without a constant stream of nitrogen through the container holding the V<sup>2+</sup>.
 - In some reaction tables, the electropotential is left blanc. This is because this value is unknown to us. Knowing some of these values might lead to valuable insights.
-- Determining the end of the synthesis of the charged electrolyte based on the reduced solution becoming purple is a qualitative method. It would be be better to quantitatively determine the end of the synthesis.
-- It is quite unpractical to keep the V(II)/V(III) electrolyte anaerobe using a constant stream of nitrogen gas. A more practical solution would be preferred.
+- Determining the end of the synthesis of the charged electrolyte based on the reduced solution becoming purple is a qualitative method. It would be be better to quantitatively determine the end of the synthesis for by instance tracking the conductivity of the electrolyte or using spectroscopy.
 
 ### Footnotes
 ---
@@ -115,6 +116,7 @@ The electrolyte synthesis is assumed to be finished, when the solution reducing 
 <sup>**4**</sup> Colours of V(V), V(IV), V(III) and V(II) oxidation states are respectively yellow, green, blue and purple [5].
 
 ### What should be added to this document?
+---
 - I'm not entirely sure if the reverse reaction 2 happens before the reverse of reaction 5, since reaction 5 requires 2 electrons. V is J/C, so I would suspect that that the reverse of reaction 5 yields more stable products.
 - Not all reaction's electropotential are known to us yet.
 - Pictures of our experimental setup should be added to this document.
@@ -134,3 +136,5 @@ The electrolyte synthesis is assumed to be finished, when the solution reducing 
 [4] Wan, C. T. C., López Barreiro, D., Forner-Cuenca, A., Barotta, J. W., Hawker, M. J., Han, G., ... & Buehler, M. J. (2020). Exploration of biomass-derived activated carbons for use in vanadium redox flow batteries. ACS Sustainable Chemistry & Engineering, 8(25), 9472-9482.
 
 [5] Jim Clark (2003 (modified June 2015)), VANADIUM, https://www.chemguide.co.uk/inorganic/transition/vanadium.html
+
+[6] O'Connor, H., Bailey, J. J., Istrate, O. M., Klusener, P. A., Watson, R., Glover, S., ... & Nockemann, P. (2022). An open-source platform for 3D-printed redox flow battery test cells. Sustainable Energy & Fuels, 6(6), 1529-1540.

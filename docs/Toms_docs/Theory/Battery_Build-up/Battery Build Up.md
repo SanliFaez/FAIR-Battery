@@ -1,5 +1,5 @@
 # Architecture of the cell
-![blieb](Images/FullBatteryBluePrint.png)
+![Battery_Schematic](Images/FullBatteryBluePrint.png)
 **Fig. 1** A schematic example of a Redox Flow Battery. All components described in the legend can be found in every RFB. The V(V)/V(II) to V(IV)/V(III) redox reaction is used as an example.
 
 ## Electrolyte
@@ -8,7 +8,7 @@ The electrolyte in a redox-flow battery is the solution in the battery containin
 |\#|Reaction | Δ*E* |
 |-|--- | ---:|
 |1| V<sup>3+</sup> +  e<sup>-</sup> &rarr; V<sup>2+</sup> | - 0.255 V vs. SHE|
-|2| VO<sub>2</sub><sup>+</sup> +  2 H<sup>+</sup> + e<sup>-</sup> &rarr; VO<sup>2+</sup> + H<sub>2</sub>O |  1.004 V vs. SHE|
+|2| VO<sup>2+</sup> + H<sub>2</sub>O &rarr;  VO<sub>2</sub><sup>+</sup> +  2 H<sup>+</sup> + e<sup>-</sup> |  1.004 V vs. SHE|
 |3| V<sup>2+</sup> + 2 VO<sub>2</sub><sup>+</sup> +  4 H<sup>+</sup> &rarr; V<sup>3+</sup> + 2 VO<sup>2+</sup> + 2 H<sub>2</sub>O |  1.259 V|
 
 **Table 1**
