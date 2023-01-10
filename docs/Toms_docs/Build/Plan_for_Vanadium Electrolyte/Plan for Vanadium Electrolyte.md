@@ -8,7 +8,7 @@ We plan on making 2 electrolytes where all chemical energy is stored vanadium ca
 - VOSO<sub>4</sub>
 - Demi water
 - 2 plastic ≥100 mL plastic beakers
-- Plastic tubes for nitrogen supply and connection of electrolyte tanks to the battery cell
+- Plastic tubes for humidified nitrogen/argon supply and connection of electrolyte tanks to the battery cell
 
 ## Theory
 ---
@@ -68,40 +68,45 @@ The electrolytes are made acidic with H<sub>2</sub>SO<sub>4</sub> to prevent V(V
 
 ![equation1](Formula_Images/calculate_weight.png) &emsp; (equation 1)
 
-Where *m* is the mass you should add to get the desired molarity of your solution, *m<sub>u</sub>* is the molar mass of the compound your adding<sup>**1**</sup> in g mol<sup>-1</sup>, *n* is the amount of atoms of the desired compound within your salt/molecule<sup>**2**</sup>, *M* is the desired molarity in mol L<sup>-1</sup>, *V<sub>goal</sub>* is the desired volume of your solution in L and purity is the purity of your compound in percentage <sup>**3**</sup>.\
+Where *m* is the mass VOSO<sub>2</sub> you should add to get the desired molarity of your solution, *m<sub>u</sub>* is the molar mass of the compound your adding in g mol<sup>-1</sup>. In this case m<sub>u</sub> is the molar mass of VOSO<sub>2</sub>, 131.00 g mol<sup>-1</sup>. *n* is the amount of atoms of the desired compound within your salt. 1 mol VOSO<sub>2</sub> contains 1 mol V, so n = 1. *M* is the desired molarity in mol L<sup>-1</sup>, *V<sub>goal</sub>* is the desired volume of your solution in L and purity is the purity of your starting compound in percentage <sup>**3**</sup>.\
 It might be the case that the concentration of your H<sub>2</sub>SO<sub>4</sub> solution is higher than you want it to be. In that case it is possible to dilute it with demi water. Using the following equation, you can determine how much H<sub>2</sub>SO<sub>4</sub> solution you should dilute:
 
 ![equation2](Formula_Images/dilution_H2SO4.png) &emsp; (equation 2)
 
 Where *V<sub>0</sub>* is the volume of your original  solution H<sub>2</sub>SO<sub>4</sub> in L, *M<sub>goal</sub>* is desired molarity of your desired H<sub>2</sub>SO<sub>4</sub> solution in mol L<sup>-1</sup>, *M<sub>0</sub>* is the molarity of the original H<sub>2</sub>SO<sub>4</sub> solution in mol L<sup>-1</sup> and *V<sub>goal</sub>* is the volume of your desired H<sub>2</sub>SO<sub>4</sub> solution in L. \
-We can calculate the time it takes for a redox reaction to go from one side of the reaction to the other with the following equation:
-
-![equation3](Formula_Images/time_to_charge.png) &emsp; (equation 3)
-
-Where *t* is the time it takes for redox reaction to move completely from one side of the reaction to the other in seconds. Specifically for a battery, t is the charging time. n<sub>e</sub> is the total amount of transferred electrons in the redox reaction in mol, ℱ is the Faraday constant in C mol<sup>-1</sup> and *I* is the electric current in C s<sup>-1</sup>. \
-The voltage on the cell can then be derived from Ohm's law:
-
-![equation4](Formula_Images/OHM.png) &emsp; (equation 4)
-
-Where *U* is the voltage on the electric circuit in V and *R* is the resistance of the circuit in Ω. This means that the voltage and the current through the cell can't be modulated simultaneously.
 
 First make a 150 mL 2.6 M H<sub>2</sub>SO<sub>4</sub>-solution.
 Using equation 1 and 2, we make 150 mL 1.5 mol L<sup>-1</sup> V(IV) solution. We use VOSO<sub>4</sub> for this.
-50 mL of this solution is used for the reduction (reaction 7) and 100 mL for the oxidation (reaction 8). Both solutions should have a blue, transparent colour caused by V(IV). Because of a higher concentration.\
-It is important to able these tanks to release possibly formed gasses to prevent your cell from exploding. It is also important that these tanks are made of a material which is inert to an acidic environment.
+50 mL of this solution is used for the reduction (reaction 7) and 100 mL for the oxidation (reaction 8). Both solutions should have a blue, transparent colour caused by V(IV).\
+It is important to enable these tanks to release possibly formed gasses to prevent your cell from exploding. It is also important that these tanks are made of a material which is inert to an acidic environment.
 
 
 ## Synthesis of the electrolyte
 ---
-Each solution should be connected to one half of the cell. To prevent reaction 7, we put a humidified nitrogen stream through the reductor tank (reaction 8).\
-Again, it is important to keep in mind that the following redox reaction is synthesis of the charged electrolyte of the battery. This reaction is not the actual charging reaction once the battery is in actual use.\
+Each solution should be connected to one half of the cell. To prevent reaction 7, we put a humidified nitrogen/argon stream through the reductor tank (reaction 8).\
+Again, it is important to keep in mind that the following redox reaction is the synthesis of the charged electrolyte of the battery. This reaction is not the actual charging reaction once the battery is in actual use.\
+The voltage on the cell can then be derived from Ohm's law:
+
+![equation4](Formula_Images/OHM.png) &emsp; (equation 3)
+
+Where *U* is the voltage on the electric circuit in V and *R* is the resistance of the circuit in Ω. This means that the voltage and the current through the cell can't be modulated simultaneously.
+
 Because of the internal resistance of the battery, we need to supply the cell with an overpotential higher than the 1.259 V of reaction 3. We charge the battery with a current 50 mA cm<sup>-2</sup>. As soon as the voltage reaches an overpotential of 1.75 V, we disconnect the battery from the power supply and stop the flow of the electrolyte. The battery should have now reached a state of charge (SOC) of about 90%.\
+We can calculate the time it takes for a redox reaction to go from one side of the reaction to the other with the following equation:
+
+![equation3](Formula_Images/time_to_charge.png) &emsp; (equation 4)
+
+Where *t* is the time it takes for redox reaction to move completely from one side of the reaction to the other in seconds. Specifically for a battery, t is the charging time. n<sub>e</sub> is the total amount of transferred electrons in the redox reaction in mol, ℱ is the Faraday constant which is 96485 C mol<sup>-1</sup> and *I* is the electric current through the cell in C s<sup>-1</sup>. \
+> **Example:** You have have a 50 mL 1.5 M VOSO<sub>2</sub> solution for the negative cell. This is 0.075 mol VOSO<sub>2</sub>.  When looking at reaction 8, you can see there is a transfer of 2 mol electrons per 1 mol of VOSO<sub>2</sub>. This means n = 0.15 mol e<sup>-</sup>.\
+One could also find this value coming from the positive cell. Here you have a 100 mL 1.5 M VOSO<sub>2</sub> solution. Looking at reaction 9, there is one mol electron transfer for 1 mol VOSO<sub>2</sub>. This also leads to n = 0.15 mol e<sup>-</sup>.\
+For example, you have a membrane is 32 cm<sup>2</sup>. Considering a current density of 50 mA cm, this means *I* = 1.6 A. \
+If you synthesize a 90% SOC electrolyte,   this would then take 0.9 * (0.15 mol *  96485 C mol<sup>-1</sup> / 1.6 A) = 8140 s = 2h and 15 min.
+
 The electrolyte synthesis can be assumed to be finished, when the reducing solution (reaction 8) has become purple and the oxidizing solution has become yellow <sup>**4**</sup>.
-It is important to keep the V(II)/V(III) electrolyte anaerobe. We do this by maintaining the the stream of nitrogen gas through the electrolyte or by applying a film of paraffin oil on top the electrolytes (to save nitrogen gas).
+It is important to keep the V(II)/V(III) electrolyte anaerobe. We do this by maintaining the the stream of humidified nitrogen/argon gas through the electrolyte or by applying a film of paraffin oil on top the electrolytes after the synthesis (to save nitrogen/argon gas).
 
 ## Challenges
 ---
-- As stated in the theory, the electrolyte containing V<sup>2+</sup> should be anaerobe to contain the capacity of the battery over charge/discharge cycles. One of the challenges would be to do this without a constant stream of nitrogen through the container holding the V<sup>2+</sup>.
 - In some reaction tables, the electropotential is left blanc. This is because this value is unknown to us. Knowing some of these values might lead to valuable insights.
 - Determining the end of the synthesis of the charged electrolyte based on the reduced solution becoming purple is a qualitative method. It would be be better to quantitatively determine the end of the synthesis for by instance tracking the conductivity of the electrolyte or using spectroscopy.
 
