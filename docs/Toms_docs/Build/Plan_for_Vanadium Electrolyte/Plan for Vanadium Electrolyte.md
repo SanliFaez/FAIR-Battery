@@ -68,7 +68,7 @@ The electrolytes are made acidic with H<sub>2</sub>SO<sub>4</sub> to prevent V(V
 
 ![equation1](Formula_Images/calculate_weight.png) &emsp; (equation 1)
 
-Where *m* is the mass VOSO<sub>2</sub> you should add to get the desired molarity of your solution, *m<sub>u</sub>* is the molar mass of the compound your adding in g mol<sup>-1</sup>. In this case m<sub>u</sub> is the molar mass of VOSO<sub>2</sub>, 131.00 g mol<sup>-1</sup>. *n* is the amount of atoms of the desired compound within your salt. 1 mol VOSO<sub>2</sub> contains 1 mol V, so n = 1. *M* is the desired molarity in mol L<sup>-1</sup>, *V<sub>goal</sub>* is the desired volume of your solution in L and purity is the purity of your starting compound in percentage <sup>**3**</sup>.\
+Where *m* is the mass VOSO<sub>4</sub> you should add to get the desired molarity of your solution, *m<sub>u</sub>* is the molar mass of the compound your adding in g mol<sup>-1</sup>. In this case m<sub>u</sub> is the molar mass of VOSO<sub>4</sub>, 131.00 g mol<sup>-1</sup>. *n* is the amount of atoms of the desired compound within your salt. 1 mol VOSO<sub>4</sub> contains 1 mol V, so n = 1. *M* is the desired molarity in mol L<sup>-1</sup>, *V<sub>goal</sub>* is the desired volume of your solution in L and purity is the purity of your starting compound in percentage <sup>**3**</sup>.\
 It might be the case that the concentration of your H<sub>2</sub>SO<sub>4</sub> solution is higher than you want it to be. In that case it is possible to dilute it with demi water. Using the following equation, you can determine how much H<sub>2</sub>SO<sub>4</sub> solution you should dilute:
 
 ![equation2](Formula_Images/dilution_H2SO4.png) &emsp; (equation 2)
@@ -97,8 +97,8 @@ We can calculate the time it takes for a redox reaction to go from one side of t
 ![equation3](Formula_Images/time_to_charge.png) &emsp; (equation 4)
 
 Where *t* is the time it takes for redox reaction to move completely from one side of the reaction to the other in seconds. Specifically for a battery, t is the charging time. n<sub>e</sub> is the total amount of transferred electrons in the redox reaction in mol, ℱ is the Faraday constant which is 96485 C mol<sup>-1</sup> and *I* is the electric current through the cell in C s<sup>-1</sup>. \
-> **Example:** You have have a 50 mL 1.5 M VOSO<sub>2</sub> solution for the negative cell. This is 0.075 mol VOSO<sub>2</sub>.  When looking at reaction 8, you can see there is a transfer of 2 mol electrons per 1 mol of VOSO<sub>2</sub>. This means n = 0.15 mol e<sup>-</sup>.\
-One could also find this value coming from the positive cell. Here you have a 100 mL 1.5 M VOSO<sub>2</sub> solution. Looking at reaction 9, there is one mol electron transfer for 1 mol VOSO<sub>2</sub>. This also leads to n = 0.15 mol e<sup>-</sup>.\
+> **Example:** You have have a 50 mL 1.5 M VOSO<sub>4</sub> solution for the negative cell. This is 0.075 mol VOSO<sub>4</sub>.  When looking at reaction 8, you can see there is a transfer of 2 mol electrons per 1 mol of VOSO<sub>4</sub>. This means n = 0.15 mol e<sup>-</sup>.\
+One could also find this value coming from the positive cell. Here you have a 100 mL 1.5 M VOSO<sub>4</sub> solution. Looking at reaction 9, there is one mol electron transfer for 1 mol VOSO<sub>4</sub>. This also leads to n = 0.15 mol e<sup>-</sup>.\
 For example, you have a membrane is 32 cm<sup>2</sup>. Considering a current density of 50 mA cm, this means *I* = 1.6 A. \
 If you synthesize a 90% SOC electrolyte,   this would then take 0.9 * (0.15 mol *  96485 C mol<sup>-1</sup> / 1.6 A) = 8140 s = 2h and 15 min.
 
@@ -112,9 +112,9 @@ It is important to keep the V(II)/V(III) electrolyte anaerobe. We do this by mai
 
 ### Footnotes
 ---
-<sup>**1**</sup> In our case our starting compound is VOSO<sub>2</sub>
+<sup>**1**</sup> In our case our starting compound is VOSO<sub>4</sub>
 
-<sup>**2**</sup> In our case there is 1 V(IV) atom in 1 VOSO<sub>2</sub> molecule
+<sup>**2**</sup> In our case there is 1 V(IV) atom in 1 VOSO<sub>4</sub> molecule
 
 <sup>**3**</sup> This should be given by the supplier of your V(IV) salt in the product description
 
