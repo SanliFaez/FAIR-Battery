@@ -28,8 +28,11 @@ feature-creep, a few strategic choices have been made:
 Where to start?
 ---------------
 
-There is no unique good path to browse these docs. If you want to get your hands dirty and already have and AD2 and battery testing hardware,
-you can consider checking the :doc:`FAIR-Battery 101`.
+There is no unique good path to browse these docs. If you want to get your hands dirty and already have a AD2 and battery testing hardware,
+you can consider checking the :doc:`FAIR-Battery 101`. These documents also contain a description on
+how to test a built battery cell, synthesize vanadium electrolyte and test a battery on capacity and
+charge-discharge efficiency.
+Beside that we have set up some challenges on our JOGL page (https://app.jogl.io/space/fairbattery).
 
 How the name was chosen
 -----------------------
