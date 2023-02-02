@@ -29,12 +29,17 @@ to learn about the impedance within the battery:
 -   **Bode plot:** this shows either the real or imaginary
     part of on the vertical axis and the frequency of AC on
     the horizontal axis. Below, an example is shown:
-.. figure:: /Images/FullBatteryBluePrint.png
+.. figure:: /BodePlot_Example.png
+
+    **Fig. 1** The different colours of the plot represent different measurements.
+
 
 -   **Nyquist plot:** this image shows the imaginary part
     of the impedance on the vertical axis and the real part
     on the horizontal axis. Below, an example is shown:
-.. figure:: /Images/FullBatteryBluePrint.png
+.. figure:: /NyquistPlot_Example.png
+
+    **Fig. 2** The different colours of the plot represent different measurements.
 
 It is possible to make these plots using a programmable
 potentiostat with the right software. We use a PalmSens EmStat4S
