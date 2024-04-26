@@ -9,12 +9,12 @@ Hardware, design, and a learning community for building an open-hardware redox-f
 
 In the _FAIR-Battery_ project, we aim to create an open-source electrochemical battery (FAIR = Findable + Accessible + Interoperable + Reproducible).
 We seek to present an open-hardware platform for a versatile battery technology and make the platform radically accessible:
-1- by deliberately using low cost and locally available materials suitable for local user groups, and
+1- by deliberately using low-cost and locally available materials suitable for local user groups, and
 2- by setting up the education communities on top of the open-hardware design.
 
-On this route, we thrive to not only provides the necessary technical details for engineering and production, but also incorporates the local constraints for actually adopting and using the technology.
+On this route, we strive to not only provide the necessary technical details for engineering and production but also incorporate the local constraints for actually adopting and using the technology.
 These constraints relate to language, availability of materials and expertise, maintenance capacity, or other locally varying conditions, which must be identified as part of the project.
-Our envisioned FAIR-Battery platform will track and seek to remove these constraints in each stage of the development by direct consultation with the user-groups.
+Our envisioned FAIR-Battery platform will track and seek to remove these constraints in each stage of the development by direct consultation with the user groups.
 
 
 Table of contents:
@@ -48,18 +48,19 @@ The following students are currently contributing to the project
 - Catherine Doherty - University College Utrecht
 - [Nicolas Barker](https://github.com/Cinbarker) - Delft University of Technology
 - Emre Burak Boz - Technical University of Eindhoven
+- Josh Hauser - Utrecht University
 
 ### Funding
 FAIR-Battery is supported by a SPARK grant from the center for unusual collaborations.
 
 ## Contributing
 
-:construction: This repository is always a work in progress and **everyone** is encouraged to help us build something that is useful to the many. :construction:
+:construction: This repository is always a work in progress and **everyone** is encouraged to help us build something useful to the many. :construction:
 
-We are currently setting up the on-boarding instructions for persistent contributors.
+We are currently setting up the onboarding instructions for persistent contributors.
 
-The github issues and pull-request functions are currently _not_ actively used for updates.
-These will be incorporate into the development procedures at a later stage
+The GitHub issues and pull-request functions are currently _not_ actively used for updates.
+These will be incorporated into the development procedures at a later stage
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
 Contributions of any kind are welcome!
@@ -78,20 +79,20 @@ Therefore, we are building our activities on three pillars
 In this project, we will bring anthropologists, engineers, chemists,
  economists, and potential local users together to identify the barriers to developing a truly FAIR-battery and envision the first steps to removing some of these barriers in a follow-up project.
 In particular, we look for the answers to these questions:
-- What range of energy storage capacities are required for the development of typical user-groups and at what cost?
+- What range of energy storage capacities are required for the development of typical user groups and at what cost?
 - Which battery technologies can potentially address these demands?
-- Are the materials and technologies required for adopting the identifies technologies available in the identifies user-groups? If not, which adjustments are needed?
+- Are the materials and technologies required for adopting the identified technologies available in the identified user groups? If not, which adjustments are needed?
 - What is the missing know-how and expertise for kick-starting the local development of pilot projects?
 
-For investigating these questions, together with an inclusive community, we will develop:
+To investigate these questions, together with an inclusive community, we will develop:
 - A. a starters' kit (hardware and software)
 - B. a lecture series for self-study
 
 
 ### 2- Battery Hardware
 
-Our aim is to publish the blueprints for an operational open-source battery by July 2022.
-We will regularly report on the devices that we are using for intermediate steps, such as testing and material selection, on this repository.
+As of April 2024, we have produced and tested an initial battery design. The current cell design can be found here.
+The next step will be to scale up beyond 1 cm^2. 
 
 ### 3- Testing and Maintenance
 
@@ -107,7 +108,5 @@ The software is a fork of the Labphew project: https://github.com/SanliFaez/labp
 
 ### Hardware for Battery Testing
 
-The battery testing software is currently designed around specific hardware, namely a Digilent Analog Discovery 2 (AD2),
-a custom charging and discharging circuit, and for impedance spectroscopy, the Analog Discovery Impedance Analyzer
-Module, an extension compatible with the AD2. 
+The current battery design can be tested and cycled using a MYSTAT, a small open-source potentiostat. 
 
