@@ -50,6 +50,9 @@ The following students are currently contributing to the project
 - Emre Burak Boz - Technical University of Eindhoven
 - Josh Hauser - Utrecht University
 
+### Collaborators
+- [The Flow Battery Research Collective](https://opencollective.com/fbrc)
+
 ### Funding
 FAIR-Battery is supported by a SPARK grant from the center for unusual collaborations.
 
@@ -91,8 +94,9 @@ To investigate these questions, together with an inclusive community, we will de
 
 ### 2- Battery Hardware
 
-As of April 2024, we have produced and tested an initial battery design. The current cell design can be found here.
-The next step will be to scale up beyond 1 cm^2. 
+As of April 2024, we have produced and tested an initial battery design with a geometric cell area of 1 cm^2 with the possibility to scale up to 10 cm^2.
+
+More detailed documentation and files can be found [here](https//codeberg.org/FBRC/RFB-dev-kit)
 
 ### 3- Testing and Maintenance
 
