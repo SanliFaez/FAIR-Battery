@@ -14,6 +14,12 @@ Our envisioned FAIR-Battery platform will track and seek to remove these constra
 
 We are closely collaborating with the [Flow Battery Research Collective](https://fbrc.dev/about.html) established in 2023 by chemist Dr. Daniel Fernandez and engineer Dr. Kirk Smith.
 
+## News and Updates
+
++ __April 9th 2024__ We hosted a workshop at the Flow4TUbattery conference at TU/e. The first functioning FAIR Battery cell design was debuted during workshops at the Technical University of Eindhoven in Eindhoven, NL. Here is [a blogpost about our experience](https://fbrc.dev/posts/Flow4U-conference/)
+
+A fully assembled cell with charged electrolyte was demonstrated and workshop attendees were able to assemble cells themselves.
+
 
 ## Project pillars
 
@@ -48,7 +54,7 @@ In order to achieve this, both software and hardware has been developed to fit t
 
 
 ## Team
-Project leads: Sanli Faez (Utrecht University)
+Project lead: Sanli Faez (Utrecht University)
 
 ### Students and research assistants
 
@@ -102,5 +108,5 @@ This project has recieved financial support from the [Center for Unusual Collabo
 
 This project is also supported by the Open Science Hacker program from the Lili's Proto Lab
 
-![LPL sharing image](./Docs/Images/lpl_sharing.jpg)
+![LPL sharing image](https://github.com/SanliFaez/Open-Hardware-Documentation-Template/blob/main/Docs/Images/lpl_sharing.jpg)
 
