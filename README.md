@@ -41,7 +41,7 @@ In particular, we look for the answers to these questions:
 
 As of April 2024, we have produced and tested an initial battery design with a geometric cell area of 1cm^2 with the possibility to scale up to 10 cm^2.
 
-More detailed documentation and files can be found [here](https//codeberg.org/FBRC/RFB-dev-kit)
+More detailed documentation and files can be found [here](https://codeberg.org/FBRC/RFB-dev-kit)
 
 The current battery design has been tested using a MYSTAT, a small open-source potentiostat. 
 
