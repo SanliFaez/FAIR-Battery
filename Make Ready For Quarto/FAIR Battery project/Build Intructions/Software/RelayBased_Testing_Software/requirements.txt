@@ -1,0 +1,11 @@
+numpy
+Pint
+PyQt5
+pyqtgraph
+pyserial
+PyYAML
+xarray
+scipy
+pypylon
+dwf
+ruamel.yaml
