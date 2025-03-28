@@ -1,1 +1,0 @@
-This folder contains the folders that will be the side navigation bar for the Fair Battery Project section of the quarto site.
