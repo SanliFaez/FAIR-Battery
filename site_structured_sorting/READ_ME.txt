@@ -1,0 +1,1 @@
+The folders in this folder are the options that will be given in the top navigation bar of the quarto website.

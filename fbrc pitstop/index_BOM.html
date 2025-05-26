@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Building a benchtop flow battery test cell with a zinc-iodide electrolyte</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./static/Logo/favicon.ico" />
+<link rel="icon" type="image/png" href="./static/Logo/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="./static/Logo/favicon-16x16.png" sizes="16x16" />
+
+    <link href="./static/base-style.css" rel="stylesheet">
+    <link href="./static/site-style.css" rel="stylesheet">
+                <style>
+  :root {
+    --primary-color: #39dbf2;
+  }
+</style>
+<style>
+  :root {
+    --secondary-color: #cccccc;
+  }
+</style>
+<style>
+  :root {
+    --hover-color: #555555;
+}
+</style>
+    
+        <script type="text/javascript" src="./static/search.js" defer=""></script>
+    </head>
+<body>
+<header class="site-header">
+    <div class="wrapper header-wrapper" >
+        <div class=header-text>
+   
+    <h1 class="site-title">Building a benchtop flow battery test cell with a zinc-iodide electrolyte</h1>
+   
+    <p class="author">by Kirk Pollard Smith and Daniel Fernandez Pinto</p>
+    <p class="affiliation">Flow Battery Research Collective</p>
+</div>
+            </div>
+</header>
+<div class="page-content">
+            <div>
+            <nav class="sidebar">
+                <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+                </a>
+                <ul class="nav-list">
+                <li>
+    <a class="navhome" href="./">
+        Building a benchtop flow battery test cell with a zinc-iodide electrolyte
+    </a>
+</li>
+<li id="nav-search" :class="focused && searchTerm.length > 0 ? 'search-result-popout' : 'search'" v-scope v-on:vue:mounted="mounted('./')">
+  <input
+    type="text"
+    placeholder="Search..."
+    v-on:input="search($event.target.value)"
+    v-on:keypress="handleKeyPress"
+    v-on:keyup.esc="$event.target.blur()"
+    v-on:focus="handleFocus"
+    v-on:blur="handleBlur"
+    :value="searchTerm" />
+    <div class="search-results" v-if="focused && searchTerm.length > 0">
+        <div v-if="searchResults.length > 0">Results:</div>
+        <div v-if="searchResults.length === 0">No results.</div>
+        <template v-for="(result, index) in searchResults">
+            <li>
+                <a class="search-result" :href="`./${result.path}.html`">
+               <span v-for="crumb in result.breadCrumbs.slice(0, -1)">
+                ${crumb + ' > '}
+                </span>
+               ${result.title || result.breadCrumbs[result.breadCrumbs.length - 1]}
+                <p>
+                    <span v-for="node in result.highlightChars" :class="node.mark ? 'highlight' : ''" >${node.chars}</span>
+                </p>
+                </a>
+            </li>
+        </template>
+    </div>
+</li>
+<li class="active">
+    <a class="active" href="./index_BOM.html">
+        Bill of Materials
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./fabrication.html">
+        Fabricating components
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./electronics.html">
+        Preparing the pumps and power electronics
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./cell_assembly.html">
+        Assembling the flow cell from components
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./jig_assembly.html">
+        Assembling the jig with electronics and flow cell
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./leak_test.html">
+        Leak testing the cell
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./electrolyte.html">
+        Preparing the electrolyte
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./testing.html">
+        Operating and testing the cell
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./cleanup.html">
+        Stopping and disassembling the cell
+    </a>
+    </li>
+<li class="not-active">
+    <a class="not-active" href="./analysis.html">
+        Analyzing and storing the experimental data
+    </a>
+    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="wrapper">
+    <h1 id="bill-of-materials">Bill of Materials</h1>
+<p>Download this as a <a href="index_BOM.csv">CSV file</a></p>
+<h3 id="parts">Parts</h3>
+<ul>
+<li>a small plate of <a Class="bom" href="brass.html">1 mm brass sheet</a> </li>
+<li>2 <a Class="bom" href="septa.html">19/22 silicone septa</a> </li>
+<li>1 <a Class="missing" href="missing">24 V DC power source</a>    - Anything between 12 V and 24 V may work but the results achieved here use 24 V. Motor speeds may need calibration to match existing results</li>
+<li>1 <a Class="missing" href="missing">Arduino UNO R3</a>    - or equivalent microcontroller that can output two independent 5V PWM signals and connect to PC over USB serial</li>
+<li>4 cm² of <a Class="bom" href="conductive_felt.html">conductive felt</a> </li>
+<li>160 cm² of <a Class="bom" href="gaskets.html">gasket sheet</a>    - Dimensions must be at least enough to cut out approx. four 6 cm x 8 cm rectangles, an A4 sheet is enough</li>
+<li>100 cm² of <a Class="bom" href="grafoil.html">grafoil</a> </li>
+<li>1 <a Class="bom" href="drivers.html">L298N motor driver</a> </li>
+<li>4 <a Class="missing" href="missing">M6 nuts with washers</a> </li>
+<li>4 <a Class="missing" href="missing">M6 x 35 mm hex socket cap bolts with washers</a> </li>
+<li>several <a Class="missing" href="missing">male-to-male breadboard jumper cables</a> </li>
+<li>2 cm² of <a Class="bom" href="nonconductive_felt.html">nonconductive felt</a> </li>
+<li>2 <a Class="missing" href="missing">peristaltic pumps</a> </li>
+<li>some <a Class="missing" href="missing">polypropylene filament</a>    - This can be substituted if you only plan to run water through the cell for testing things other than the chemistry</li>
+<li>several cm <a Class="missing" href="missing">polypropylene packing tape</a> </li>
+<li>A4 sheet <a Class="bom" href="separator_sheet.html">separator sheet</a> </li>
+<li>some <a Class="missing" href="missing">stiff filament</a>    - PLA works</li>
+<li>44 cm of <a Class="bom" href="tubing.html">tubing</a> </li>
+<li>1 <a Class="missing" href="missing">USB A-to-B cable</a> </li>
+</ul>
+<h3 id="tools">Tools</h3>
+<ul>
+<li>1 <a Class="missing" href="missing">10 mm socket</a>    - To fit torque wrench</li>
+<li>1 <a Class="missing" href="missing">5 mL syringe</a> </li>
+<li>1 <a Class="missing" href="missing">50 mL beaker</a> </li>
+<li>2 <a Class="missing" href="missing">50 mL beakers</a>    - or drip tray/other container to hold 10 mL of water</li>
+<li>1 <a Class="missing" href="missing">5mm hex key</a> </li>
+<li>1 <a Class="missing" href="missing">FDM printer</a> </li>
+<li>1 <a Class="missing" href="missing">gasket cutter machine</a>    - Vinyl/laser cutter or hand tools</li>
+<li>1 <a Class="missing" href="missing">pair of chemical safety goggles</a> </li>
+<li>1 <a Class="missing" href="missing">pair of nitrile gloves</a> </li>
+<li>1 <a Class="missing" href="missing">PC</a>    - Must be able to flash firmware to microcontroller and connect over USB serial to microcontroller and potentiostat</li>
+<li>1 <a Class="bom" href="pstat.html">potentiostat</a>    - preferably the MYSTAT</li>
+<li>1 <a Class="missing" href="missing">scale</a> </li>
+<li>1 <a Class="missing" href="missing">stir bar</a> </li>
+<li>1 <a Class="missing" href="missing">stir plate</a> </li>
+<li>1 <a Class="missing" href="missing">torque wrench</a>    - to accept 5 mm allen key or 10 mm hex socket</li>
+<li>1 <a Class="missing" href="missing">utility knife</a> </li>
+<li>1 <a Class="missing" href="missing">vial</a>    - min. 20 mL</li>
+<li>1 <a Class="missing" href="missing">weighing spatula</a> </li>
+</ul>
+<h3 id="chemicals">Chemicals</h3>
+<ul>
+<li>10.0 grams of <a Class="missing" href="missing">8% vinegar/acetic acid</a> </li>
+<li>10 mL of <a Class="missing" href="missing">deionized water</a> </li>
+<li>3.0 grams of <a Class="missing" href="missing">potassium acetate</a> </li>
+<li>6.6 grams of <a Class="missing" href="missing">potassium iodide</a> </li>
+<li>2.8 grams of <a Class="missing" href="missing">zinc chloride</a> </li>
+</ul>
+<!-- GitBuilding Nav -->
+<hr />
+<p><a href="index.html">Previous page</a> | <a href="fabrication.html">Next page</a></p>
+    </div>
+</div>
+<footer class="site-footer">
+    <div class="wrapper">
+        <a target="_blank" rel="noopener noreferrer" href="https://gitbuilding.io">
+    <img class="icon" src="./static/Logo/GitBuilding500x.png" alt="GitBuilding logo">
+    <span class="doc-info">Documentation powered by GitBuilding</span>
+</a>
+    <p class="author">©2025 Kirk Pollard Smith and Daniel Fernandez Pinto</p>
+    <p class="email">Contact: <a href="mailto:info@fbrc.dev">info@fbrc.dev</a></p>
+    <p class="license">Building a benchtop flow battery test cell with a zinc-iodide electrolyte is released under <a href="license.html">CERN-OHL-S-2.0</a>.</p>
+
+    </div>
+</footer></body>
+</html>
