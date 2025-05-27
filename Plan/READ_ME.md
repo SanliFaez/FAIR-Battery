@@ -1,0 +1,1 @@
+This folder includes notes outlining the planned approach and steps taken during the website's development.

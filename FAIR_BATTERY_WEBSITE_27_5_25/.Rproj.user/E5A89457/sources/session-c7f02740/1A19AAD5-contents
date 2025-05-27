@@ -1,0 +1,64 @@
+project:
+  type: website
+
+website:
+  navbar:
+    logo: images/clipboard-2323808813.png
+    left:
+      
+        
+    
+      - text: "Welcome"
+        href: index.md 
+        
+      - text: "FAIR Battery Project"
+        href: FAIR_Battery_Main.md
+        
+      - text: "Community"
+        href: Community.md
+        
+      - text: "Contributing to FAIR-Battery"
+        href: Contributing_2.md
+        
+  sidebar: 
+    id: FAIR Battery Project
+    style:  "docked"
+    search: true
+    contents:
+      
+    
+      - FAIR_Battery_Main.md
+      
+      - text: "Battery 101"
+        href: Battery Build Up.md
+        contents:
+        
+      - text: "Components" 
+        href: Componants.md
+        contents: 
+        
+      - text: "Build" 
+        href: FBRC_project.md
+        contents:
+      
+      - text: "Testing"
+        href: Testing.md
+        contents: 
+
+      - text: "Troubleshooting"
+        href: troubleshooting.md
+        contents:
+    
+      
+
+        
+  
+format:
+  html:
+    theme: cosmo
+          
+    css: styles.css
+    toc: true
+
+editor: visual
+
