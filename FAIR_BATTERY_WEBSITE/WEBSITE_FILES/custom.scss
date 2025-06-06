@@ -1,0 +1,124 @@
+/*-- scss:defaults --*/
+// Base document colors
+
+// ------------------------------------
+// Base Colors
+// ------------------------------------
+$white: #ffffff;
+$black: #000000;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+// ------------------------------------
+// Primary Palette (Lime theme)
+// ------------------------------------
+$primary: #a3e635; // Lime green
+$primary-light: lighten($primary, 15%); // Bright lime
+$primary-dark: darken($primary, 15%);   // Earthy lime green
+
+// ------------------------------------
+// Secondary Palette (Complementary dark green-gray)
+// ------------------------------------
+$secondary: #4b6043; // Muted green-gray
+$secondary-light: lighten($secondary, 15%);
+$secondary-dark: darken($secondary, 15%);
+
+// ------------------------------------
+// Reds & Pinks
+// ------------------------------------
+$accent-red: #dc3545;
+$accent-crimson: #b11226;
+$accent-rose: #e05260;
+$accent-pink: #e83e8c;
+$accent-fuchsia: #d63384;
+
+// ------------------------------------
+// Oranges & Yellows
+// ------------------------------------
+$accent-orange: #fd7e14;
+$accent-amber: #ffbf00;
+$accent-yellow: #ffc107;
+$accent-gold: #ffcc00;
+
+// ------------------------------------
+// Greens
+// ------------------------------------
+$accent-green: #28a745;
+$accent-emerald: #2ecc71;
+$accent-mint: #98ff98;
+$accent-lime: #a3e635;
+$accent-olive: #808000;
+
+// ------------------------------------
+// Blues & Cyans
+// ------------------------------------
+$accent-blue: #007bff;
+$accent-sky: #87ceeb;
+$accent-cyan: #17a2b8;
+$accent-teal: #20c997;
+$accent-azure: #007fff;
+
+// ------------------------------------
+// Purples & Violets
+// ------------------------------------
+$accent-purple: #6f42c1;
+$accent-indigo: #6610f2;
+$accent-violet: #8a2be2;
+$accent-lavender: #b57edc;
+
+// ------------------------------------
+// Browns & Earth Tones
+// ------------------------------------
+$accent-brown: #8b4513;
+$accent-copper: #b87333;
+$accent-tan: #d2b48c;
+$accent-beige: #f5f5dc;
+
+// ------------------------------------
+// Grayscale Tones (for UI components)
+// ------------------------------------
+$accent-silver: #c0c0c0;
+$accent-slate: #708090;
+$accent-charcoal: #36454f;
+$accent-stone: #928e85;
+
+// ------------------------------------
+// Lime Theming UI Variables
+// ------------------------------------
+$link-color: darken($accent-teal,20%);
+$link-hover-color: darken($accent-lime, 50%);
+$navbar-bg: lighten( #32cd32, 40%);
+$navbar-fg: lighten(#1b3c1a, 20%);
+$body-bg: lighten(#f4fff0,10%); // Very pale green
+$body-color: $gray-800;
+$code-bg: #e9fbe5; // Light lime background for code blocks
+$code-color: #2e7d32; // Forest green for code
+
+// Optional: Button styles override (if used)
+$btn-primary-bg: $primary;
+$btn-primary-border: $primary-dark;
+$btn-primary-color: $black;
+$btn-hover-bg: $primary-dark;
+$btn-hover-color: $white;
+
+.navbar {
+  background-color: $navbar-bg;
+  color: $navbar-fg;
+  font-weight: bold; // <-- Makes all text inside navbar bold
+
+  a, .nav-link {
+    color: $navbar-fg;
+    font-weight: bold; // <-- Ensures links are also bold
+
+    &:hover {
+      color: darken($navbar-fg, 10%);
+    }
+  }
+}

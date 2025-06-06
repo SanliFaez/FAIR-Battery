@@ -1,0 +1,145 @@
+--7-3-25--
+*Going to go through files and see what I can immediately add and see what seems to be missing.
+ -->Build files are on another site, how can I access the raw files? 
+
+--11-3-25--
+*Meeting Sanli
+*Tinker on site mechanics
+
+--14-3-25--
+*make local copy of github and start structuring attic and site make up.
+*do same for the ones from fbrc.
+ -->Takes more time than expected, since it I have to figure out the structure of the repository.
+ -->Q for Sanli: How is the fbrc site different from what we want to accomplish? Important to know in order to know what to copy from fbrc.
+ -->Going to use /main/docs/_site/ and find the corresponding files in /main/docs/ as template for copying files from fbrc, since this is what is actually on site.
+    -->Made list of files as described above. Next time I want to look at these more closely in order to determine in what order they are needed. 
+    -->make picture map.
+
+--18-3-25--
+*Plan: Continue sorting through fbrc files to see what order we need them. Copy all md files that from docs that are on the html list made last week.
+ --> all files from html list are copied, exept for a few that weren't in docs. Probably are related to site layout, but first check what these files are. Afterwards I am going to sort the files in the right catogories.
+--> a lot of files are still missing, so am now going to look for them in the repo --> Fixed, only the bill of material was not found in docs as an md file so I converted it.
+
+*Idea: add more general home page.
+*Plan: start adding the now sorted files into the site.
+ --> Note: The pictures for fbrc are not yet copied, but will probably directly copy to quarto. Not sure if I can copy directories to quarto en just implement files without specifying path. Update: apperantly directory structure is kept, but this could actually be usefull. Will now structure directory so it will be more ready for quarto (do this in seperate forder)
+
+--21-2-25--
+
+*Plan: continue adapting the files to quarto.
+       --> stl files arent being rendered. Will have to fix this later and will continue with implementing the other files.
+        --> try and fix as much in the files as possible.
+*Note: Right now there are fbrc files and fair battery project files which dont allign in a nice way. After fbrc is well implemented it is time to write new Fair battery files which make up a more coherent story for the project.
+
+--25-3-25--
+refer to fbrc, but explain parts etc. 
+
+
+--28-3-25--
+*Plan: Make list of componants we want to talk about in the build section. 
+
+-> going to make a new complete structure for the site, so that it will be easier to have a overview of what I have to do.
+-> Make directory to start making the correct files. From ./site_structured_sorting, take files that need little changing and place them in the correct subdirectory.
+-> start reconfiguring files, starting at ./home. 
+*Notes: People who visit this site will get a kit?
+
+--1-4-25--
+*Plan: continue making new documents, starting with Fair Battery Project: Main.
+-> Made main and battery 101 (old version seemed proficient), will now mode on to componants, but since there is not a specific file for this, I will have to make a new one which I expect to take some time. Will make a list of what to discuss here.
+
+-pumps
+-arduino
+-jig/ reservoirs
+-flowcell
+
+--10-4-25--
+*plan: go on with componants part
+-> no documents really explaining the componants, so will make it with info in battery 101. Also, will add links to different files on the site later on.
+
+->questions for sanli: Why grafoil?
+  Arduino no longer with driver motor. Ask sanli what to change
+
+-> go on to fbrc project file.
+-> add more pictures to files to make it more pleasant, but after the files are done.
+-> updated home site.
+
+*Important*: For the commity part for the site, I need more info like sites or what the general idea is. fbrc has their blog but fair-battery just says to e-mail sanli. How seperated are fbrc and fairbattery?
+-> troubleshooting file
+
+->Maybe add a extra page for credits, so I dont need to do it all throughout the site.
+-> next time, implement what has been done so far into a quarto site, might need to restart that to make it have good structure and use previous version as a template.
+
+--11-4-25--
+*Plan: start implementing made docs to quarto site. 
+
+Files that still have to be made: Beyond, testing, community, contributing.
+- want the brite theme but is not included in quarto, might look into this
+
+--22-4-25--
+*Plan: -make list of what is still left to do.
+       -make list of questions for Sanli.
+
+
+-> Start updating battery 101.
+-properties of functioning battery that can store energy.
+ (pick up at potentiostat)
+-Look at site customizations
+
+--25-4-25--
+Continue on with potentiostat. (revisit later, seems that filling the testing page takes priority right now.
+
+filling testing page stucture:
+1. testing home page
+2. Frst_testing and charging
+3. charge_Discharge_testing
+4. Stability_Electrode(?)
+ 
+Where to put scripts?
+
+--29-4-25--
+-Meeting Sanli answers to questions:
+ -remake testing to refer to fbrc, give short explanation
+ -community: No real community yet so refer to fbrc
+ -contributing: No real way to contribute yet, but there is an active community at fbrc
+ -beyond: not really a priority
+ -testing: testing files of fairbattery are not up to date, again refer to fbrc
+ 
+*Plan: -make mockup community and contribution page.
+       -remake testing page
+
+(forgot to log inbetween)
+
+--10-5-25--
+-from meeting sanli: -upload site
+                     -post for feedback
+                     -go to lili's proto lab to take pictures
+                     -ask bacholar student to also give feedback
+*plan: publish site and create post for feedback. Continue looking into how .css files work.
+
+--13-5-25--
+*plan: look at reaction and process them in a text file. Afterwards go on looking into how to change styles.ccs.
+-No responds yet
+
+--16-5-25--
+*plan: look at reaction and process them in a text file. Afterwards, do some more research into fbrc.
+
+-maybe want clear roadmap of FAIR Battery.
+
+--27-5-25--
+Follow up on sanli's request.
+
+--6-6-25--
+!Some days are missing but I was working on how yo add custom colors etc. to the standers styles provided by quarto in .scss files.
+
+*Plan:
+-Add new read_me to website repository that explains more about fairbattery itself.
+-Add git link to site (on my pc before uploading) 
+-fix hyperlink in build section
+-Add video.
+
+*Notes Krutesh:
+-Update for new pumps (?)
+-Change battery image
+-Battery chemicals 
+
+
